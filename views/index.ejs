@@ -16,6 +16,11 @@
 
       <!-- Main Content -->
       <main style="flex: 1">
+        <!-- Mobile Sidebar Toggle Button -->
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+          ☰ Show Categories
+        </button>
+
         <h1>Blog Posts</h1>
 
         <input
@@ -44,5 +49,11 @@
 
     <%- include("partials/footer") %>
     <script src="/js/search.js" defer></script>
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('visible');
+      }
+    </script>
   </body>
 </html>
