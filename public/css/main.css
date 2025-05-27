@@ -1,0 +1,261 @@
+/* =====================
+    Base Layout & Typography
+========================= */
+
+body {
+  background-color: #222;
+  color: #ddd;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.3;
+  margin-top: 1.5em;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-top: 40px;
+  color: rgb(149, 247, 106);
+  border-bottom: 2px solid rgb(192, 180, 176);
+  padding-bottom: 5px;
+  font-size: medium;
+}
+
+h3 {
+  color: rgb(248, 173, 23);
+}
+
+h4 {
+  color: rgb(58, 245, 226);
+  font-weight: bolder;
+  border: 1px solid #ddd;
+  font-size: 2.3em;
+  text-align: center;
+}
+
+h5 {
+  color: purple;
+  font-weight: bolder;
+  border: 1px solid #aaa;
+  font-size: 1.6em;
+}
+
+p {
+  font-size: 1.1em;
+  margin-bottom: 1.2em;
+}
+
+ul,
+ol {
+  padding-left: 1.5em;
+}
+
+/* =====================
+    Layout Containers
+========================= */
+
+.page-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  width: 240px;
+  height: fit-content;
+}
+
+/* Sidebar Styling */
+.sidebar h3 {
+  color: rgb(241, 76, 131);
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  color: rgb(248, 173, 23);
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .page-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+  }
+}
+
+/* =====================
+    Post List Styling
+========================= */
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.post-list li {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.post-list li:hover {
+  background-color: #444;
+  transform: translateY(-2px);
+}
+
+.post-list li a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+}
+
+.post-list li a:hover {
+  color: orangered;
+}
+
+/* =====================
+    Markdown Styling
+========================= */
+
+blockquote {
+  background: #2b2b2b;
+  padding: 1em;
+  border-left: 5px solid orangered;
+  font-style: italic;
+  color: #ccc;
+}
+
+section {
+  margin-bottom: 2.5em;
+  padding-bottom: 1em;
+  border-bottom: 1px dashed #444;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+table th,
+table td {
+  border: 1px solid #555;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #333;
+  color: orangered;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #555;
+  margin: 20px 0;
+}
+
+/* =====================
+    Code Blocks
+========================= */
+
+pre,
+code {
+  background-color: #2e2e2e;
+  color: #f8f8f2;
+  padding: 8px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* =====================
+    Post Detail Components
+========================= */
+
+.question-header {
+  background-color: #fff3e0;
+  color: rgb(69, 37, 25);
+  padding: 10px 15px;
+  border-left: 5px solid rgb(233, 200, 188);
+  margin: 20px 0 10px;
+  font-size: 1.3em;
+}
+
+.question-header h3 {
+  color: rgb(248, 173, 23);
+  margin: 0;
+}
+
+.question-header p {
+  font-weight: bold;
+}
+
+.answer-body {
+  background-color: #333;
+  color: #eee;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+/* =====================
+    Links
+========================= */
+
+a {
+  display: inline-block;
+  margin: 20px 0;
+  color: orangered;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+a:hover {
+  text-decoration: underline;
+}

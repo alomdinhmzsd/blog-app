@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head", { title: "Blog SAA-C03 Post" }) %>
+  <body>
+    <div class="page-wrapper">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <%- include("partials/header") %>
+        <h3>📁 Categories</h3>
+        <ul>
+          <% categories.forEach(category => { %>
+          <li><a href="#<%= category.category %>"><%= category.title %></a></li>
+          <% }) %>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <main style="flex: 1">
+        <h1>Blog Posts</h1>
+
+        <input
+          type="text"
+          id="searchBox"
+          placeholder="Search blog posts..."
+          style="width: 100%; padding: 12px; font-size: 1em; margin: 20px 0" />
+        <ul id="searchResults" class="post-list"></ul>
+
+        <% categories.forEach(category => { %>
+        <section>
+          <h2 id="<%= category.category %>"><%= category.title %></h2>
+          <ul class="post-list">
+            <% category.posts.forEach(post => { %>
+            <li>
+              <a href="/post/<%= post.category %>/<%= post.slug %>">
+                <%= post.title %>
+              </a>
+            </li>
+            <% }) %>
+          </ul>
+        </section>
+        <% }) %>
+      </main>
+    </div>
+
+    <%- include("partials/footer") %>
+    <script src="/js/search.js" defer></script>
+  </body>
+</html>

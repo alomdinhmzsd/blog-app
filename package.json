@@ -1,0 +1,19 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ibrahim Hade",
+  "license": "MIT",
+  "description": "A markdown-powered blog using EJS and Express.",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "highlight.js": "^11.11.1",
+    "marked": "^15.0.12"
+  }
+}

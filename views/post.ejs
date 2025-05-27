@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head", { title: title }) %>
+  <body>
+    <div class="page-wrapper">
+      <aside class="sidebar">
+        <%- include("partials/header") %>
+        <p><a href="/" style="color: orangered">← Back to Home</a></p>
+      </aside>
+
+      <main style="flex: 1">
+        <article>
+          <h1><%= title %></h1>
+          <p style="color: #aaa; font-size: 0.95em">
+            Category: <strong><%= category %></strong>
+          </p>
+          <hr />
+          <div><%- content %></div>
+          <hr />
+          <p><a href="/" style="color: orangered">← Back to Home</a></p>
+        </article>
+      </main>
+    </div>
+
+    <%- include("partials/footer") %>
+  </body>
+</html>
