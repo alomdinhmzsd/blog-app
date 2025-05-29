@@ -6,6 +6,15 @@
       <aside class="sidebar">
         <%- include("partials/header") %>
         <p><a href="/" style="color: orangered">← Back to Home</a></p>
+
+        <% if (questionLinks && questionLinks.length > 0) { %>
+        <h3>🔗 Questions</h3>
+        <ul>
+          <% questionLinks.forEach(link => { %>
+          <li><a href="#<%= link.anchor %>"><%= link.label %></a></li>
+          <% }) %>
+        </ul>
+        <% } %>
       </aside>
 
       <main style="flex: 1">
@@ -23,5 +32,34 @@
     </div>
 
     <%- include("partials/footer") %>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const links = document.querySelectorAll('.sidebar a[href^="#saa-"]');
+        const anchors = document.querySelectorAll('[data-anchor]');
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const id = entry.target.getAttribute('data-anchor');
+              const link = document.querySelector(
+                '.sidebar a[href="#' + id + '"]'
+              );
+
+              if (entry.isIntersecting) {
+                links.forEach((l) => l.classList.remove('active-anchor'));
+                if (link) link.classList.add('active-anchor');
+              }
+            });
+          },
+          {
+            rootMargin: '-30% 0px -60% 0px', // triggers slightly before middle of viewport
+            threshold: 0.1,
+          }
+        );
+
+        anchors.forEach((anchor) => observer.observe(anchor));
+      });
+    </script>
   </body>
 </html>

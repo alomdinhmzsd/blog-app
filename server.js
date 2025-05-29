@@ -63,7 +63,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// Individual post
+// Individual post with anchor ID injection for SAA-Qxxx
 app.get('/post/:category/:slug', (req, res) => {
   const { category, slug } = req.params;
   const filePath = path.join(__dirname, 'posts', category, `${slug}.md`);
@@ -71,11 +71,32 @@ app.get('/post/:category/:slug', (req, res) => {
   fs.readFile(filePath, 'utf8', (err, content) => {
     if (err) return res.status(404).send('Post not found.');
 
-    const htmlContent = marked.parse(content);
+    const questionLinks = [];
+
+    // Inject anchor links into any line with "Question 'SAA-Qxxx'"
+    const enhancedMarkdown = content.replace(
+      /(Question\s+'SAA-(Q\d+)')/g,
+      (match, _full, qid) => {
+        const anchorId = `saa-${qid.toLowerCase()}`;
+        questionLinks.push({ label: `SAA-${qid}`, anchor: anchorId });
+        // return `<a id="${anchorId}" data-anchor="${anchorId}">${match}</a>`;
+        return `<div id="${anchorId}" data-anchor="${anchorId}" class="anchor-wrapper"><strong>${match}</strong></div>`;
+      }
+    );
+
+    const wrapTables = (html) => {
+      return html
+        .replace(/<table>/g, '<div class="table-wrapper"><table>')
+        .replace(/<\/table>/g, '</table></div>');
+    };
+
+    const htmlContent = wrapTables(marked.parse(enhancedMarkdown));
+
     res.render('post', {
       title: titleCase(slug),
       category: titleCase(category),
       content: htmlContent,
+      questionLinks,
     });
   });
 });

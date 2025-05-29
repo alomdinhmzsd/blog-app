@@ -69,16 +69,22 @@ ol {
 
 .page-wrapper {
   display: flex;
-  gap: 40px;
   align-items: flex-start;
+  gap: 40px;
 }
 
+/* Sidebar should never shrink or disappear on large screens */
 .sidebar {
+  width: 240px;
+  flex-shrink: 0;
   position: sticky;
   top: 20px;
   align-self: flex-start;
-  width: 240px;
-  height: fit-content;
+}
+
+/* Main content grows to fill the rest */
+main {
+  flex: 1;
 }
 
 /* Sidebar Styling */
@@ -106,6 +112,12 @@ ol {
   text-decoration: underline;
 }
 
+.sidebar a.active-anchor {
+  color: #00e5ff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 /* Responsive Layout */
 @media (max-width: 768px) {
   .page-wrapper {
@@ -114,7 +126,7 @@ ol {
 
   .sidebar {
     position: static;
-    width: 100%;
+    width: 100% !important;
   }
 }
 
@@ -275,6 +287,36 @@ a:hover {
   cursor: pointer;
 }
 
+.anchor-wrapper {
+  scroll-margin-top: 100px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* ==========================
+   Responsive Table Handling
+========================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  overflow-x: auto;
+  display: block;
+}
+
+table th,
+table td {
+  border: 1px solid #555;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #333;
+  color: orangered;
+}
+
 @media (max-width: 768px) {
   .sidebar {
     display: none;
@@ -292,5 +334,89 @@ a:hover {
 
   .sidebar-toggle {
     display: inline-block;
+  }
+}
+
+/* ================================
+   Responsive Table Handling
+================================== */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  display: block;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+  min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  border: 1px solid #555;
+  padding: 10px;
+  text-align: left;
+}
+
+.table-wrapper th {
+  background-color: #333;
+  color: orangered;
+}
+
+/* ================================
+   Wrap Long Text + Code Blocks
+================================== */
+
+pre {
+  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
+  background: #1e1e1e;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+code {
+  word-break: break-word;
+}
+
+article {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* ================================
+   Global Layout Adjustments
+================================== */
+
+body, html {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ================================
+   Responsive Mobile Layout
+================================== */
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .sidebar,
+  main {
+    width: 100% !important;
+  }
+
+  .table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
   }
 }
