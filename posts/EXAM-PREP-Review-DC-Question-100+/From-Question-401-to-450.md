@@ -2794,6 +2794,137 @@ You need to make sure that **photos from paying (“pro”) users** are **proces
 Let me know if you'd like to publish this as a card in your quiz app or extract it into a markdown file for your blog!
 
 <h5>Question 'SAA-Q423'</h5>
+
+Here's the full SAA-C03 analysis for the given question:
+
+---
+
+## ✅ SAA-C03 Practice Exam Analysis – **Triggering Image Analysis from S3 Uploads**
+
+---
+
+### ✅ 1. In Simple English – What’s being asked?
+
+A company uploads profile photos to an S3 bucket and has four EC2 instances running an image analysis app. The goal is to ensure that **only one EC2 instance** handles the processing for **each** photo upload. Which AWS integration setup is **best** for this?
+
+---
+
+### ✅ 2. Verbiage & Realism
+
+| **Aspect**              | **Assessment**                                                                  |
+| ----------------------- | ------------------------------------------------------------------------------- |
+| Clarity of Requirements | Very clear — S3 uploads should trigger image analysis on one (not all) EC2s     |
+| AWS Service Realism     | Fully realistic — EC2, S3, SQS, SNS, and event triggers are commonly integrated |
+| Real-world Use Case     | Common scenario — photo uploads triggering async analysis in scalable systems   |
+| Hidden Assumptions      | Requires deduplication and correct fan-out control to **only one instance**     |
+
+---
+
+### ✅ 3. What the Question is Testing
+
+| **Concept**                            | **Explanation**                                                               |
+| -------------------------------------- | ----------------------------------------------------------------------------- |
+| **Event-driven architecture using S3** | Understanding how S3 events can trigger downstream processes                  |
+| **Message queueing (SQS vs SNS)**      | Choosing the right decoupling mechanism based on message consumption behavior |
+| **Scaling worker nodes (EC2)**         | Ensuring the design avoids duplication of work across multiple workers        |
+| **Message distribution control**       | Ensuring one instance processes one photo upload (vs. broadcast behavior)     |
+
+---
+
+### ✅ 4. Answer and Explanation
+
+✅ **Correct Answer:**
+**Create an S3 Event Notification that sends a message to an SQS queue. Make the EC2 instances read from the SQS queue**
+
+| **Option**                                                                                                               | **Verdict**  | **Explanation**                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Subscribe the EC2 instances to the S3 Inventory stream**                                                               | ❌ Incorrect | S3 Inventory provides periodic object listings, not real-time event notifications. It’s not meant for triggering immediate processing.                                                                     |
+| **Create a CloudWatch Event that reacts to objects uploads in S3 and invokes one of the EC2 instances**                  | ❌ Incorrect | CloudWatch Events (now EventBridge) doesn’t natively support S3 object upload triggers. You’d need a Lambda or intermediate integration, and even then targeting **one EC2** deterministically is complex. |
+| **Create an S3 Event Notification that sends a message to an SQS queue. Make the EC2 instances read from the SQS queue** | ✅ Correct   | SQS ensures **only one EC2 instance** picks up and processes each message. The EC2s can poll the queue, and message visibility timeout prevents duplicates.                                                |
+| **Create an S3 Event Notification that sends a message to an SNS topic. Subscribe the EC2 instances to the SNS topic**   | ❌ Incorrect | SNS fan-out would deliver the message to **all subscribed EC2 instances**. You’d need additional logic to ensure only one processes the photo, which adds unnecessary complexity.                          |
+
+---
+
+### ✅ 5. Final Answer
+
+**Create an S3 Event Notification that sends a message to an SQS queue. Make the EC2 instances read from the SQS queue.**
+
+---
+
+### ✅ 6. Relevant AWS Documentation
+
+| **Topic**                                | **Link**                                                                                                                                                                           |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| S3 Event Notifications                   | [https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html)                       |
+| Using Amazon SQS for Distributed Systems | [https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) |
+| Event-driven processing with EC2 & SQS   | [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)                                 |
+
+---
+
+### ✅ 7. Are the Options Tricky?
+
+| **Option**          | **Trickiness** | **Why?**                                                                      |
+| ------------------- | -------------- | ----------------------------------------------------------------------------- |
+| S3 Inventory stream | Yes            | It sounds related to S3 but isn’t for real-time notification or triggering    |
+| CloudWatch Events   | Mild           | Reasonable misdirection; it’s used for events, but not directly for S3 PUTs   |
+| SNS + EC2           | Yes            | Tempting but leads to **multiple EC2s receiving** the same message (fan-out)  |
+| SQS + EC2           | No             | Straightforward and **correct pattern** for one-consumer-per-message behavior |
+
+---
+
+### ✅ 8. How to Approach Similar Questions
+
+**Strategy:**
+
+- Focus on the event **source** (S3) and the **consumer behavior** (only one EC2 should act).
+- Eliminate fan-out mechanisms like SNS when deduplication or single-instance processing is desired.
+- Look for **poll-based** systems like SQS that naturally allow only one worker to pick a job.
+
+**Tip:**
+Always prefer **SQS** when you want **guaranteed exactly-once processing** (or at least once with deduplication) by one consumer out of a pool.
+
+---
+
+### ✅ 9. Technology Deep Dive
+
+| **Service**           | **How it Behaves**                                                                 |
+| --------------------- | ---------------------------------------------------------------------------------- |
+| **S3 Event + SNS**    | Broadcasts the same event to all subscribers → all EC2s would get the same message |
+| **S3 Event + SQS**    | Queues the event → only **one** EC2 receives and processes each message            |
+| **CloudWatch Events** | Doesn’t directly trigger on S3 PUTs; needs Lambda or bridging logic                |
+| **S3 Inventory**      | Not real-time, just a report — unsuitable for triggering live workflows            |
+
+---
+
+### ✅ 10. Summary Table (Conclusion)
+
+| **Criteria**                       | **Best Fit**                         |
+| ---------------------------------- | ------------------------------------ |
+| Real-time trigger on S3 upload     | ✅ S3 Event Notification             |
+| Process by one EC2 out of many     | ✅ SQS (single consumer per message) |
+| Fan-out scenario (not needed here) | ❌ SNS                               |
+| Inventory listing (not real-time)  | ❌ S3 Inventory                      |
+
+---
+
+### ✅ 11. Concept Expansion / Key Facts
+
+- **SQS vs SNS**:
+
+  - _SQS_ supports decoupled **point-to-point** communication. Each message is delivered **once** to a single consumer.
+  - _SNS_ is for **fan-out**, broadcasting messages to **all subscribers** (Lambda, HTTP endpoints, email, etc.).
+
+- **Message Visibility Timeout**:
+
+  - Ensures once an EC2 instance picks up a message, other instances **won’t** see it until the timeout expires.
+  - Prevents duplicate work unless the processing instance fails.
+
+- **Common Pattern**:
+
+  - S3 → SQS → Auto-scaled EC2 or Lambda is a **standard architecture** for scalable event-driven processing.
+
+---
+
 <h5>Question 'SAA-Q424'</h5>
 <h5>Question 'SAA-Q425'</h5>
 <h5>Question 'SAA-Q426'</h5>
