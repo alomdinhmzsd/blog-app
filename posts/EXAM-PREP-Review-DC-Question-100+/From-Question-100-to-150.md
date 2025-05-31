@@ -1,6 +1,16 @@
-<h5> Question 'SAA-Q100'</h5>
+---
+category: General
+questionId: saa-q100
+tags:
+  - saa-c03
+title: "SAA-Q100 \u2013 AWS Practice Question"
+---
 
-Here is the **full SAA-C03 style analysis** for the **valid IP address types for an ALB target group (IP target type)** — formatted for markdown-based study and exam readiness:
+### Question 'SAA-Q100'
+
+Q100
+
+s:
 
 ---
 
@@ -35,13 +45,12 @@ You’re configuring an **Application Load Balancer (ALB)** that uses an **IP ta
 
 ✅ **Correct Answer:**
 **Private IP address**
-
-| Option                 | Verdict      | Explanation                                                                                                                                                                                                           |
+| Option | Verdict | Explanation |
 | ---------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Private IP address** | ✅ Correct   | When using an ALB with **IP target type**, only **private IP addresses** **within the VPC or peered VPC** are valid. This includes ECS tasks, on-premises systems over Direct Connect/VPN, or custom apps using ENIs. |
-| **Dynamic IP address** | ❌ Incorrect | “Dynamic” isn’t a valid classification — IPs can change, but targets must be **manually updated**. AWS does not auto-discover dynamic IPs.                                                                            |
-| **Elastic IP address** | ❌ Incorrect | Elastic IPs are **public IPs mapped to EC2 instances**. You **cannot register EIPs** as ALB targets using the IP target type.                                                                                         |
-| **Public IP address**  | ❌ Incorrect | ALBs **do not support public IPs** as targets — traffic must be routed to **internal resources via private IPs** for security and routing reasons.                                                                    |
+| **Private IP address** | ✅ Correct | When using an ALB with **IP target type**, only **private IP addresses** **within the VPC or peered VPC** are valid. This includes ECS tasks, on-premises systems over Direct Connect/VPN, or custom apps using ENIs. |
+| **Dynamic IP address** | ❌ Incorrect | “Dynamic” isn’t a valid classification — IPs can change, but targets must be **manually updated**. AWS does not auto-discover dynamic IPs. |
+| **Elastic IP address** | ❌ Incorrect | Elastic IPs are **public IPs mapped to EC2 instances**. You **cannot register EIPs** as ALB targets using the IP target type. |
+| **Public IP address** | ❌ Incorrect | ALBs **do not support public IPs** as targets — traffic must be routed to **internal resources via private IPs** for security and routing reasons. |
 
 ---
 
@@ -109,7 +118,21 @@ Use **EC2 private IPs**, **ECS tasks**, or **on-prem Direct Connect/VPN-connecte
 
 Let me know if you'd like a **diagram showing ALB → private IP targets vs instance ID targets**!
 
-<h5> Question 'SAA-Q101'</h5>
+---
+
+category: General
+questionId: saa-q101
+tags:
+
+- saa-c03
+  title: "SAA-Q101 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q101'
+
+Q101
+
 Here is the **full SAA-C03 style analysis** for the **AWS Shield Advanced cost anomaly across multiple accounts** — cleanly formatted for markdown and exam preparation.
 
 ---
@@ -146,13 +169,12 @@ The question asks why **AWS Shield Advanced** is **costing more than expected**,
 
 ✅ **Correct Answer:**
 **Consolidated billing has not been enabled**
-
-| Option                                                  | Verdict      | Explanation                                                                                                                                                                                                                            |
+| Option | Verdict | Explanation |
 | ------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Consolidated billing has not been enabled**           | ✅ Correct   | Without **consolidated billing**, AWS Shield Advanced **charges \$3,000/month per account** (minimum). With consolidated billing, you can **share protection** across accounts in an AWS Organization and avoid **duplicate charges**. |
-| **Shield Advanced used for custom servers outside AWS** | ❌ Incorrect | Shield Advanced only protects AWS resources — you **can’t use it outside AWS**.                                                                                                                                                        |
-| **Savings Plans not enabled**                           | ❌ Incorrect | Savings Plans apply to **EC2, Fargate, Lambda** — not Shield. Has nothing to do with DDoS protection costs.                                                                                                                            |
-| **Shield Advanced also covers Shield Standard**         | ❌ Incorrect | This is **true**, but it doesn’t cause **extra cost** — Shield Standard is free and included by default.                                                                                                                               |
+| **Consolidated billing has not been enabled** | ✅ Correct | Without **consolidated billing**, AWS Shield Advanced **charges \$3,000/month per account** (minimum). With consolidated billing, you can **share protection** across accounts in an AWS Organization and avoid **duplicate charges**. |
+| **Shield Advanced used for custom servers outside AWS** | ❌ Incorrect | Shield Advanced only protects AWS resources — you **can’t use it outside AWS**. |
+| **Savings Plans not enabled** | ❌ Incorrect | Savings Plans apply to **EC2, Fargate, Lambda** — not Shield. Has nothing to do with DDoS protection costs. |
+| **Shield Advanced also covers Shield Standard** | ❌ Incorrect | This is **true**, but it doesn’t cause **extra cost** — Shield Standard is free and included by default. |
 
 ---
 
@@ -220,7 +242,20 @@ If a service costs more "across accounts," always check if **consolidated billin
 
 Let me know if you'd like a **cost optimization checklist** for AWS Shield Advanced in multi-account setups!
 
-<h5> Question 'SAA-Q102'</h5>
+---
+
+category: General
+questionId: saa-q102
+tags:
+
+- saa-c03
+  title: "SAA-Q102 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q102'
+
+Q102
 
 Here is the **full SAA-C03 style analysis** for the question on **handling performance lag during predictable daily traffic spikes** — structured and markdown-ready for SAA-C03 exam prep or blog publishing.
 
@@ -257,13 +292,12 @@ The application experiences **slower performance** at the **same time every day*
 
 ✅ **Correct Answer:**
 **Configure a scheduled action to scale-out before peak traffic**
-
-| Option                                        | Verdict      | Explanation                                                                                                                                                     |
+| Option | Verdict | Explanation |
 | --------------------------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Scheduled action to scale-out before peak** | ✅ Correct   | When spikes are **predictable** (e.g., every day at 8 AM), scheduled scaling can **proactively launch EC2 instances** before the traffic begins — avoiding lag. |
-| **Lifecycle hook before peak traffic**        | ❌ Incorrect | Lifecycle hooks are for **pausing instance launch/termination** to run config scripts — not for triggering scale-out actions.                                   |
-| **Step scaling policy**                       | ❌ Incorrect | Step scaling **reacts to metric thresholds** (e.g., CPU > 80%) — useful for **unpredictable traffic**, not for predictable spikes.                              |
-| **Target tracking policy**                    | ❌ Incorrect | Also reactive — adjusts capacity to **maintain a target metric** (like 60% CPU). It responds to traffic changes but doesn’t **anticipate** them.                |
+| **Scheduled action to scale-out before peak** | ✅ Correct | When spikes are **predictable** (e.g., every day at 8 AM), scheduled scaling can **proactively launch EC2 instances** before the traffic begins — avoiding lag. |
+| **Lifecycle hook before peak traffic** | ❌ Incorrect | Lifecycle hooks are for **pausing instance launch/termination** to run config scripts — not for triggering scale-out actions. |
+| **Step scaling policy** | ❌ Incorrect | Step scaling **reacts to metric thresholds** (e.g., CPU > 80%) — useful for **unpredictable traffic**, not for predictable spikes. |
+| **Target tracking policy** | ❌ Incorrect | Also reactive — adjusts capacity to **maintain a target metric** (like 60% CPU). It responds to traffic changes but doesn’t **anticipate** them. |
 
 ---
 
@@ -333,7 +367,21 @@ If your traffic follows a known time pattern (e.g., daily lunch-hour spike), pre
 
 Let me know if you'd like a **cron expression sample** to define the scheduled action in Auto Scaling!
 
-<h5> Question 'SAA-Q103'</h5>
+---
+
+category: General
+questionId: saa-q103
+tags:
+
+- saa-c03
+  title: "SAA-Q103 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q103'
+
+Q103
+
 Here is the **full SAA-C03 style analysis** for the question on setting up a **dedicated, encrypted, low-latency, and high-throughput** connection from a **data center to AWS Cloud** — formatted cleanly for SAA-C03 exam preparation and markdown use.
 
 ---
@@ -370,13 +418,12 @@ An e-commerce company wants to set up a **dedicated and encrypted** connection f
 
 ✅ **Correct Answer:**
 **Use AWS Direct Connect plus VPN to establish a connection between the data center and AWS Cloud**
-
-| Option                       | Verdict              | Explanation                                                                                                                                                                  |
+| Option | Verdict | Explanation |
 | ---------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **AWS Direct Connect**       | ❌ Incorrect (alone) | Direct Connect provides **dedicated low-latency, high-throughput** links but **does not encrypt traffic by default**. Encryption must be layered on top — typically via VPN. |
-| **AWS Direct Connect + VPN** | ✅ Correct           | Combines **dedicated performance (Direct Connect)** with **encryption (VPN)**. This pairing is ideal for regulated industries needing **both performance and security**.     |
-| **VPC Transit Gateway**      | ❌ Incorrect         | Transit Gateway enables **routing within AWS or across VPCs**, not from **on-prem to AWS** without **Direct Connect or VPN** behind it.                                      |
-| **Site-to-Site VPN**         | ❌ Incorrect         | VPN offers **encryption**, but not **low latency or high throughput**. It’s limited to internet-based transport.                                                             |
+| **AWS Direct Connect** | ❌ Incorrect (alone) | Direct Connect provides **dedicated low-latency, high-throughput** links but **does not encrypt traffic by default**. Encryption must be layered on top — typically via VPN. |
+| **AWS Direct Connect + VPN** | ✅ Correct | Combines **dedicated performance (Direct Connect)** with **encryption (VPN)**. This pairing is ideal for regulated industries needing **both performance and security**. |
+| **VPC Transit Gateway** | ❌ Incorrect | Transit Gateway enables **routing within AWS or across VPCs**, not from **on-prem to AWS** without **Direct Connect or VPN** behind it. |
+| **Site-to-Site VPN** | ❌ Incorrect | VPN offers **encryption**, but not **low latency or high throughput**. It’s limited to internet-based transport. |
 
 ---
 
@@ -446,7 +493,20 @@ When both **encryption and high-performance networking** are required from **on-
 
 Let me know if you’d like a **visual architecture diagram** of how Direct Connect + VPN integrates into a hybrid AWS setup!
 
-<h5> Question 'SAA-Q104'</h5>
+---
+
+category: General
+questionId: saa-q104
+tags:
+
+- saa-c03
+  title: "SAA-Q104 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q104'
+
+Q104
 
 Here is the **full SAA-C03 style analysis** for the question on **S3 bucket features that can only be suspended once enabled** — formatted in clean, markdown-ready structure for SAA-C03 exam prep.
 
@@ -483,13 +543,12 @@ You're asked: **Which S3 bucket feature cannot be completely disabled once turne
 
 ✅ **Correct Answer:**
 **Versioning**
-
-| Option                     | Verdict      | Explanation                                                                                                                                                                                          |
+| Option | Verdict | Explanation |
 | -------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Versioning**             | ✅ Correct   | Once S3 **versioning is enabled**, it **cannot be disabled** — only **suspended**. Prior versions remain accessible, and future writes do not overwrite existing objects unless permanently deleted. |
-| **Requester Pays**         | ❌ Incorrect | You can **enable or disable** this feature at any time.                                                                                                                                              |
-| **Static Website Hosting** | ❌ Incorrect | Can be toggled **on or off** freely.                                                                                                                                                                 |
-| **Server Access Logging**  | ❌ Incorrect | Logging can be **enabled and disabled** at will. No restrictions like versioning.                                                                                                                    |
+| **Versioning** | ✅ Correct | Once S3 **versioning is enabled**, it **cannot be disabled** — only **suspended**. Prior versions remain accessible, and future writes do not overwrite existing objects unless permanently deleted. |
+| **Requester Pays** | ❌ Incorrect | You can **enable or disable** this feature at any time. |
+| **Static Website Hosting** | ❌ Incorrect | Can be toggled **on or off** freely. |
+| **Server Access Logging** | ❌ Incorrect | Logging can be **enabled and disabled** at will. No restrictions like versioning. |
 
 ---
 
@@ -555,7 +614,20 @@ S3 **versioning** is the **only feature** that behaves this way. Once enabled, i
 
 Let me know if you'd like a **cheat sheet of S3 bucket feature toggleability** for quick review!
 
-<h5> Question 'SAA-Q105'</h5>
+---
+
+category: General
+questionId: saa-q105
+tags:
+
+- saa-c03
+  title: "SAA-Q105 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q105'
+
+Q105
 
 Here is the **full SAA-C03 style analysis** for the question on improving **resilience of a multi-tier application** against **periodic traffic spikes** — cleanly formatted for markdown and SAA-C03 exam preparation.
 
@@ -595,14 +667,13 @@ A social media app is hosted on **EC2 instances behind an ALB**, using an **Auro
 
 - **Use CloudFront distribution in front of the Application Load Balancer**
 - **Use Aurora Replica**
-
-| Option                      | Verdict      | Explanation                                                                                                                                                      |
-| --------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CloudFront distribution** | ✅ Correct   | **CloudFront caches static content at edge locations**, reducing load on backend EC2 instances and improving latency/resilience during traffic spikes.           |
-| **AWS Shield**              | ❌ Incorrect | Shield protects against **DDoS attacks**, not regular **traffic spikes** from legitimate users.                                                                  |
-| **AWS Direct Connect**      | ❌ Incorrect | Direct Connect improves **private network performance**, typically for **on-prem to cloud**, not relevant for **public user spikes**.                            |
-| **Aurora Replica**          | ✅ Correct   | Aurora Replicas **scale read workloads** and add **fault tolerance**, helping the database **stay responsive** during spike conditions.                          |
-| **AWS Global Accelerator**  | ❌ Incorrect | Helps with **global traffic routing**, improving **latency and failover**, but not directly tied to **spike resilience** unless traffic is globally distributed. |
+  | Option | Verdict | Explanation |
+  | --------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | **CloudFront distribution** | ✅ Correct | **CloudFront caches static content at edge locations**, reducing load on backend EC2 instances and improving latency/resilience during traffic spikes. |
+  | **AWS Shield** | ❌ Incorrect | Shield protects against **DDoS attacks**, not regular **traffic spikes** from legitimate users. |
+  | **AWS Direct Connect** | ❌ Incorrect | Direct Connect improves **private network performance**, typically for **on-prem to cloud**, not relevant for **public user spikes**. |
+  | **Aurora Replica** | ✅ Correct | Aurora Replicas **scale read workloads** and add **fault tolerance**, helping the database **stay responsive** during spike conditions. |
+  | **AWS Global Accelerator** | ❌ Incorrect | Helps with **global traffic routing**, improving **latency and failover**, but not directly tied to **spike resilience** unless traffic is globally distributed. |
 
 ---
 
@@ -676,7 +747,20 @@ Look for **auto-scaling, caching, and read offloading** solutions. Avoid selecti
 
 Let me know if you'd like a **traffic spike mitigation checklist** for multi-tier AWS apps!
 
-<h5> Question 'SAA-Q106'</h5>
+---
+
+category: General
+questionId: saa-q106
+tags:
+
+- saa-c03
+  title: "SAA-Q106 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q106'
+
+Q106
 
 Here is the **full SAA-C03 style analysis** for the question on **programming languages supported by AWS Lambda runtime** — formatted for markdown and ideal for SAA-C03 exam prep.
 
@@ -715,14 +799,13 @@ The company wants to **move all compute to serverless**, specifically AWS Lambda
 
 - **C#/.NET**
 - **Go**
-
-| Option      | Verdict      | Explanation                                                                                                                            |
-| ----------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **C**       | ❌ Incorrect | Not supported **natively** in Lambda. You could run C via custom runtime or container image, but **not via standard Lambda runtimes**. |
-| **C#/.NET** | ✅ Correct   | Supported natively by Lambda as **.NET Core** (e.g., .NET 6 and earlier).                                                              |
-| **R**       | ❌ Incorrect | Not natively supported. You would need a **custom runtime or container image**.                                                        |
-| **PHP**     | ❌ Incorrect | Not officially supported as a native Lambda runtime — though possible via custom runtime.                                              |
-| **Go**      | ✅ Correct   | **Go (Golang)** is a fully supported native Lambda runtime.                                                                            |
+  | Option | Verdict | Explanation |
+  | ----------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+  | **C** | ❌ Incorrect | Not supported **natively** in Lambda. You could run C via custom runtime or container image, but **not via standard Lambda runtimes**. |
+  | **C#/.NET** | ✅ Correct | Supported natively by Lambda as **.NET Core** (e.g., .NET 6 and earlier). |
+  | **R** | ❌ Incorrect | Not natively supported. You would need a **custom runtime or container image**. |
+  | **PHP** | ❌ Incorrect | Not officially supported as a native Lambda runtime — though possible via custom runtime. |
+  | **Go** | ✅ Correct | **Go (Golang)** is a fully supported native Lambda runtime. |
 
 ---
 
@@ -798,7 +881,20 @@ If the language is **not in the official Lambda docs**, assume it’s only possi
 
 Let me know if you'd like a **cheat sheet for Lambda runtime language support**, including which languages are best suited for startup vs enterprise use cases!
 
-<h5> Question 'SAA-Q107'</h5>
+---
+
+category: General
+questionId: saa-q107
+tags:
+
+- saa-c03
+  title: "SAA-Q107 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q107'
+
+Q107
 
 Here is the **full SAA-C03 style analysis** for the question on **API Gateway supporting stateful and stateless communication** — formatted for markdown-based SAA-C03 prep.
 
@@ -835,13 +931,12 @@ The startup needs to support **both stateful and stateless communication** via A
 
 ✅ **Correct Answer:**
 **API Gateway creates RESTful APIs that enable stateless client-server communication and API Gateway also creates WebSocket APIs that adhere to the WebSocket protocol, which enables stateful, full-duplex communication between client and server**
-
-| Option                                         | Verdict      | Explanation                                                                                                                   |
+| Option | Verdict | Explanation |
 | ---------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| **RESTful = stateful, WebSocket = stateful**   | ❌ Incorrect | RESTful APIs are **stateless by design** — each request is independent.                                                       |
-| **RESTful = stateless, WebSocket = stateful**  | ✅ Correct   | This is the only **fully correct statement**. REST is stateless, while WebSocket supports **stateful, full-duplex** sessions. |
-| **RESTful = stateful, WebSocket = stateless**  | ❌ Incorrect | Incorrect on **both counts** — REST is not stateful, and WebSockets are not stateless.                                        |
-| **RESTful = stateless, WebSocket = stateless** | ❌ Incorrect | WebSocket is **stateful** — it maintains an open connection over time, unlike REST.                                           |
+| **RESTful = stateful, WebSocket = stateful** | ❌ Incorrect | RESTful APIs are **stateless by design** — each request is independent. |
+| **RESTful = stateless, WebSocket = stateful** | ✅ Correct | This is the only **fully correct statement**. REST is stateless, while WebSocket supports **stateful, full-duplex** sessions. |
+| **RESTful = stateful, WebSocket = stateless** | ❌ Incorrect | Incorrect on **both counts** — REST is not stateful, and WebSockets are not stateless. |
+| **RESTful = stateless, WebSocket = stateless** | ❌ Incorrect | WebSocket is **stateful** — it maintains an open connection over time, unlike REST. |
 
 ---
 
@@ -905,7 +1000,20 @@ If you see “full-duplex” and “stateful”, think **WebSockets**. If you se
 
 Let me know if you'd like a **decision flowchart** for choosing between REST, WebSocket, and HTTP APIs on API Gateway!
 
-<h5> Question 'SAA-Q108'</h5>
+---
+
+category: General
+questionId: saa-q108
+tags:
+
+- saa-c03
+  title: "SAA-Q108 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q108'
+
+Q108
 
 Here is the **full SAA-C03 style analysis** for the question on **how to delete all Amazon GuardDuty findings and stop using the service** — formatted cleanly for markdown and exam readiness.
 
@@ -942,13 +1050,12 @@ A financial company uses **Amazon GuardDuty** for **security threat detection**.
 
 ✅ **Correct Answer:**
 **Disable the service in the general settings**
-
-| Option                                          | Verdict      | Explanation                                                                                                                                                          |
+| Option | Verdict | Explanation |
 | ----------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Suspend the service in the general settings** | ❌ Incorrect | “Suspending” GuardDuty is **not a supported action** — no such setting exists in AWS Console.                                                                        |
-| **Disable the service in the general settings** | ✅ Correct   | **Disabling GuardDuty** deletes all findings and metadata within the account. This is the **official method** to remove all GuardDuty-related data and stop billing. |
-| **Raise a service request to delete backups**   | ❌ Incorrect | AWS does **not retain GuardDuty findings in long-term backups** accessible to users. Deleting the service clears the findings automatically.                         |
-| **De-register the service under services tab**  | ❌ Incorrect | There's no concept of “deregistering” GuardDuty. Only **enabling/disabling** exists via console, CLI, or API.                                                        |
+| **Suspend the service in the general settings** | ❌ Incorrect | “Suspending” GuardDuty is **not a supported action** — no such setting exists in AWS Console. |
+| **Disable the service in the general settings** | ✅ Correct | **Disabling GuardDuty** deletes all findings and metadata within the account. This is the **official method** to remove all GuardDuty-related data and stop billing. |
+| **Raise a service request to delete backups** | ❌ Incorrect | AWS does **not retain GuardDuty findings in long-term backups** accessible to users. Deleting the service clears the findings automatically. |
+| **De-register the service under services tab** | ❌ Incorrect | There's no concept of “deregistering” GuardDuty. Only **enabling/disabling** exists via console, CLI, or API. |
 
 ---
 
@@ -1015,7 +1122,20 @@ For services like GuardDuty, **disabling the service deletes all related finding
 
 Let me know if you'd like a **step-by-step CLI or console guide** for disabling GuardDuty in multiple regions!
 
-<h5> Question 'SAA-Q109'</h5>
+---
+
+category: General
+questionId: saa-q109
+tags:
+
+- saa-c03
+  title: "SAA-Q109 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q109'
+
+Q109
 
 Here is the **full SAA-C03 style analysis** for the question on improving **availability and performance of a global UDP-based application with custom DNS** — formatted in markdown for SAA-C03 exam prep.
 
@@ -1053,13 +1173,12 @@ A gaming company needs to improve the **performance and availability** of a **UD
 
 ✅ **Correct Answer:**
 **AWS Global Accelerator**
-
-| Option                               | Verdict      | Explanation                                                                                                                                                                                                                                                           |
+| Option | Verdict | Explanation |
 | ------------------------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **AWS Global Accelerator**           | ✅ Correct   | Global Accelerator supports **UDP traffic**, **improves performance** by routing through the **AWS global network**, and allows for **regional failover**. It also **works with custom DNS** by exposing **static IPs** that can be pointed to from any DNS provider. |
-| **Amazon Route 53**                  | ❌ Incorrect | While Route 53 can support **failover**, it’s a **DNS-level** solution and doesn’t support **UDP load balancing** or optimize performance. It also requires using Route 53 DNS services, which the company doesn’t want.                                              |
-| **Amazon CloudFront**                | ❌ Incorrect | CloudFront is for **HTTP/HTTPS** content delivery — it does **not support UDP** and is not suitable for real-time gaming traffic.                                                                                                                                     |
-| **AWS Elastic Load Balancing (ELB)** | ❌ Incorrect | ELBs (even Network Load Balancers) don’t provide **global failover** or **cross-region routing**. They also don’t offer **performance acceleration** across regions.                                                                                                  |
+| **AWS Global Accelerator** | ✅ Correct | Global Accelerator supports **UDP traffic**, **improves performance** by routing through the **AWS global network**, and allows for **regional failover**. It also **works with custom DNS** by exposing **static IPs** that can be pointed to from any DNS provider. |
+| **Amazon Route 53** | ❌ Incorrect | While Route 53 can support **failover**, it’s a **DNS-level** solution and doesn’t support **UDP load balancing** or optimize performance. It also requires using Route 53 DNS services, which the company doesn’t want. |
+| **Amazon CloudFront** | ❌ Incorrect | CloudFront is for **HTTP/HTTPS** content delivery — it does **not support UDP** and is not suitable for real-time gaming traffic. |
+| **AWS Elastic Load Balancing (ELB)** | ❌ Incorrect | ELBs (even Network Load Balancers) don’t provide **global failover** or **cross-region routing**. They also don’t offer **performance acceleration** across regions. |
 
 ---
 
@@ -1131,7 +1250,21 @@ For **real-time gaming**, **VoIP**, or **video streaming over UDP**, **Global Ac
 
 Let me know if you'd like a **Global Accelerator vs Route 53 vs CloudFront comparison cheat sheet**!
 
-<h5> Question 'SAA-Q110'</h5>
+---
+
+category: General
+questionId: saa-q110
+tags:
+
+- saa-c03
+  title: "SAA-Q110 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q110'
+
+Q110
+
 Here is the **full SAA-C03 style analysis** for the question on **real-time data fan-out to multiple applications** — formatted for SAA-C03 exam prep in markdown.
 
 ---
@@ -1172,13 +1305,12 @@ You need to pick an AWS solution that allows **multiple consumers** to read the 
 
 ✅ **Correct Answer:**
 **Amazon Kinesis Data Streams**
-
-| Option                          | Verdict      | Explanation                                                                                                                                                                                                                                                       |
+| Option | Verdict | Explanation |
 | ------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Amazon Kinesis Data Streams** | ✅ Correct   | Kinesis is built for **real-time streaming**, and supports **multiple consumers** reading the **same data concurrently** (e.g., one for notifications, one for analytics). Each consumer can independently read from the stream with no data loss.                |
-| **Amazon SNS**                  | ❌ Incorrect | SNS is a **pub/sub service**, but it **does not retain messages** for replay. It is good for real-time delivery to endpoints but **not suited for analytics consumers that may read later or at different rates**.                                                |
-| **SQS + SNS**                   | ❌ Incorrect | This pattern allows **fan-out**, but **SQS queues are isolated** — once a message is delivered to a queue, it is not available to other queues. You would need **multiple SNS topics and subscriptions**, making it more complex and less efficient than Kinesis. |
-| **SQS + SES**                   | ❌ Incorrect | SES is for **email delivery**, which is not relevant here. SQS still lacks **multi-consumer capability** for same data ingestion.                                                                                                                                 |
+| **Amazon Kinesis Data Streams** | ✅ Correct | Kinesis is built for **real-time streaming**, and supports **multiple consumers** reading the **same data concurrently** (e.g., one for notifications, one for analytics). Each consumer can independently read from the stream with no data loss. |
+| **Amazon SNS** | ❌ Incorrect | SNS is a **pub/sub service**, but it **does not retain messages** for replay. It is good for real-time delivery to endpoints but **not suited for analytics consumers that may read later or at different rates**. |
+| **SQS + SNS** | ❌ Incorrect | This pattern allows **fan-out**, but **SQS queues are isolated** — once a message is delivered to a queue, it is not available to other queues. You would need **multiple SNS topics and subscriptions**, making it more complex and less efficient than Kinesis. |
+| **SQS + SES** | ❌ Incorrect | SES is for **email delivery**, which is not relevant here. SQS still lacks **multi-consumer capability** for same data ingestion. |
 
 ---
 
@@ -1247,7 +1379,20 @@ If **data must be processed in parallel by multiple applications**, think **Kine
 
 Let me know if you’d like a **diagram comparing event-driven architectures using SNS, SQS, and Kinesis**!
 
-<h5> Question 'SAA-Q111'</h5>
+---
+
+category: General
+questionId: saa-q111
+tags:
+
+- saa-c03
+  title: "SAA-Q111 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q111'
+
+Q111
 
 Here is the **full SAA-C03 style analysis** for the question on **protecting Amazon S3 objects against accidental deletion for compliance** — formatted cleanly for SAA-C03 exam readiness and markdown use.
 
@@ -1286,14 +1431,13 @@ A healthcare startup must **comply with regulations** and wants to **prevent acc
 
 - **Enable MFA delete on the bucket**
 - **Enable versioning on the bucket**
-
-| Option                                            | Verdict      | Explanation                                                                                                                                                                       |
-| ------------------------------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Enable MFA delete on the bucket**               | ✅ Correct   | Requires **multi-factor authentication** to delete versioned objects or disable versioning. Adds a **strong layer of deletion protection**, especially in regulated environments. |
-| **Establish a process for managerial approval**   | ❌ Incorrect | While good in practice, AWS has **no built-in feature** to enforce this — it's a **manual policy**, not a technical control.                                                      |
-| **Change the S3 console to require confirmation** | ❌ Incorrect | The console has **basic confirmations**, but they can’t be enforced across tools like AWS CLI or SDKs. It’s **not a compliance-grade safeguard**.                                 |
-| **Enable versioning on the bucket**               | ✅ Correct   | Enables **object recovery** after deletion. Deletes just create a **delete marker**, and earlier versions remain intact — **critical for data durability**.                       |
-| **Create SNS trigger for deletions**              | ❌ Incorrect | This **notifies after the fact** — it doesn't prevent deletion. Useful for alerts, but **not for prevention**.                                                                    |
+  | Option | Verdict | Explanation |
+  | ------------------------------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | **Enable MFA delete on the bucket** | ✅ Correct | Requires **multi-factor authentication** to delete versioned objects or disable versioning. Adds a **strong layer of deletion protection**, especially in regulated environments. |
+  | **Establish a process for managerial approval** | ❌ Incorrect | While good in practice, AWS has **no built-in feature** to enforce this — it's a **manual policy**, not a technical control. |
+  | **Change the S3 console to require confirmation** | ❌ Incorrect | The console has **basic confirmations**, but they can’t be enforced across tools like AWS CLI or SDKs. It’s **not a compliance-grade safeguard**. |
+  | **Enable versioning on the bucket** | ✅ Correct | Enables **object recovery** after deletion. Deletes just create a **delete marker**, and earlier versions remain intact — **critical for data durability**. |
+  | **Create SNS trigger for deletions** | ❌ Incorrect | This **notifies after the fact** — it doesn't prevent deletion. Useful for alerts, but **not for prevention**. |
 
 ---
 
@@ -1364,7 +1508,20 @@ For **object protection**, the top two features to remember are:
 
 Let me know if you’d like a **bucket policy example** that enforces versioning and restricts delete access!
 
-<h5> Question 'SAA-Q112'</h5>
+---
+
+category: General
+questionId: saa-q112
+tags:
+
+- saa-c03
+  title: "SAA-Q112 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q112'
+
+Q112
 
 Here is the **full SAA-C03 style analysis** for the question on **S3 encryption for sensitive health data with auditing requirements** — formatted for markdown and SAA-C03 exam readiness.
 
@@ -1407,13 +1564,12 @@ You’re asked to pick the **best encryption solution** for this.
 
 ✅ **Correct Answer:**
 **Use SSE-KMS to encrypt the user data on S3**
-
-| Option                                      | Verdict      | Explanation                                                                                                                                                                                                      |
+| Option | Verdict | Explanation |
 | ------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **SSE-KMS**                                 | ✅ Correct   | AWS manages encryption **keys via KMS**. You don’t have to supply your own keys, and **CloudTrail logs all key usage events** — providing the required **audit trail**. Ideal for HIPAA-compliant architectures. |
-| **Client-side encryption with client keys** | ❌ Incorrect | You must manage keys, which contradicts the requirement of **not providing your own keys**.                                                                                                                      |
-| **SSE-S3**                                  | ❌ Incorrect | AWS encrypts data, but does **not offer key usage audit logs** — no visibility into **when/who accessed keys**.                                                                                                  |
-| **SSE-C**                                   | ❌ Incorrect | Requires the client to provide encryption keys with every request — again, this violates the **no custom key management** condition.                                                                             |
+| **SSE-KMS** | ✅ Correct | AWS manages encryption **keys via KMS**. You don’t have to supply your own keys, and **CloudTrail logs all key usage events** — providing the required **audit trail**. Ideal for HIPAA-compliant architectures. |
+| **Client-side encryption with client keys** | ❌ Incorrect | You must manage keys, which contradicts the requirement of **not providing your own keys**. |
+| **SSE-S3** | ❌ Incorrect | AWS encrypts data, but does **not offer key usage audit logs** — no visibility into **when/who accessed keys**. |
+| **SSE-C** | ❌ Incorrect | Requires the client to provide encryption keys with every request — again, this violates the **no custom key management** condition. |
 
 ---
 
@@ -1481,7 +1637,20 @@ SSE-KMS is the **only S3 encryption option** that provides **detailed CloudTrail
 
 Let me know if you want a **sample bucket policy** enforcing SSE-KMS for all uploaded objects!
 
-<h5> Question 'SAA-Q113'</h5>
+---
+
+category: General
+questionId: saa-q113
+tags:
+
+- saa-c03
+  title: "SAA-Q113 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q113'
+
+Q113
 
 Here is the **final SAA-C03 style analysis** for the repeated question regarding **Amazon S3 cost optimization with infrequent access patterns**, now fully resolved using the **30-day constraint** confirmed in your shared AWS documentation screenshot.
 
@@ -1523,13 +1692,12 @@ A media agency stores files that are:
 
 ✅ **Correct Answer:**
 **Configure a lifecycle policy to transition the objects to Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA) after 30 days**
-
-| Option                           | Verdict               | Explanation                                                                                                                                                                           |
+| Option | Verdict | Explanation |
 | -------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **S3 Standard-IA after 30 days** | ✅ Technically valid  | Satisfies the 30-day minimum, retains multi-AZ availability, but costs more than One Zone-IA.                                                                                         |
-| **S3 Standard-IA after 7 days**  | ❌ Invalid            | Violates AWS lifecycle rules — must **wait 30 days** before transitioning.                                                                                                            |
+| **S3 Standard-IA after 30 days** | ✅ Technically valid | Satisfies the 30-day minimum, retains multi-AZ availability, but costs more than One Zone-IA. |
+| **S3 Standard-IA after 7 days** | ❌ Invalid | Violates AWS lifecycle rules — must **wait 30 days** before transitioning. |
 | **S3 One Zone-IA after 30 days** | ✅ ✅ **Best Answer** | Meets 30-day transition requirement, saves \~20% more than Standard-IA, still allows **instant access**, and **data is re-creatable** — acceptable tradeoff for single-AZ durability. |
-| **S3 One Zone-IA after 7 days**  | ❌ Invalid            | Again, violates AWS lifecycle policy which requires **minimum 30 days** in Standard class.                                                                                            |
+| **S3 One Zone-IA after 7 days** | ❌ Invalid | Again, violates AWS lifecycle policy which requires **minimum 30 days** in Standard class. |
 
 ---
 
@@ -1593,7 +1761,20 @@ If data is **re-creatable**, **not business-critical**, and **must be accessed i
 
 Let me know if you’d like a **ready-to-use lifecycle rule JSON** that transitions to One Zone-IA after 30 days.
 
-<h5> Question 'SAA-Q114'</h5>
+---
+
+category: General
+questionId: saa-q114
+tags:
+
+- saa-c03
+  title: "SAA-Q114 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q114'
+
+Q114
 
 Here is the **full SAA-C03 style analysis** for the question on **routing traffic to microservices using URL path matching with Application Load Balancer (ALB)** — structured for SAA-C03 exam prep in markdown format.
 
@@ -1635,13 +1816,12 @@ The question asks: **What ALB feature should be used to route traffic based on t
 
 ✅ **Correct Answer:**
 **Path-based Routing**
-
-| Option                                   | Verdict      | Explanation                                                                                                                                                           |
+| Option | Verdict | Explanation |
 | ---------------------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **HTTP header-based routing**            | ❌ Incorrect | ALB supports some header matching, but **this use case is about URL path**, not headers like `User-Agent` or `Authorization`.                                         |
-| **Host-based Routing**                   | ❌ Incorrect | Routes based on **domain name** (e.g., `orders.example.com`) — not path after the domain.                                                                             |
-| **Path-based Routing**                   | ✅ Correct   | Specifically designed to route traffic based on the **URL path** (e.g., `/orders`, `/products`). Ideal for **monolith-to-microservice transitions** and RESTful APIs. |
-| **Query string parameter-based routing** | ❌ Incorrect | Used to route based on parameters like `?type=shoes`, not for `/orders` or `/products` path segments.                                                                 |
+| **HTTP header-based routing** | ❌ Incorrect | ALB supports some header matching, but **this use case is about URL path**, not headers like `User-Agent` or `Authorization`. |
+| **Host-based Routing** | ❌ Incorrect | Routes based on **domain name** (e.g., `orders.example.com`) — not path after the domain. |
+| **Path-based Routing** | ✅ Correct | Specifically designed to route traffic based on the **URL path** (e.g., `/orders`, `/products`). Ideal for **monolith-to-microservice transitions** and RESTful APIs. |
+| **Query string parameter-based routing** | ❌ Incorrect | Used to route based on parameters like `?type=shoes`, not for `/orders` or `/products` path segments. |
 
 ---
 
@@ -1713,7 +1893,20 @@ Always visualize the full URL:
 
 Let me know if you'd like a **sample ALB listener rule JSON** for routing based on URL paths like `/orders` and `/products`.
 
-<h5> Question 'SAA-Q115'</h5>
+---
+
+category: General
+questionId: saa-q115
+tags:
+
+- saa-c03
+  title: "SAA-Q115 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q115'
+
+Q115
 
 ---
 
@@ -1873,7 +2066,20 @@ Because it’s built exactly for **parallel, distributed, high-performance workl
 
 Ready for the next question whenever you are 😎
 
-<h5> Question 'SAA-Q116'</h5>
+---
+
+category: General
+questionId: saa-q116
+tags:
+
+- saa-c03
+  title: "SAA-Q116 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q116'
+
+Q116
 
 Glad you liked the last breakdown — let’s keep the momentum going! 🚀
 
@@ -2048,7 +2254,20 @@ A little — and deliberately so:
 
 Ready for the next one whenever you are, Commander of the Cloud 👨‍✈️☁️
 
-<h5> Question 'SAA-Q117'</h5>
+---
+
+category: General
+questionId: saa-q117
+tags:
+
+- saa-c03
+  title: "SAA-Q117 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q117'
+
+Q117
 
 Now that’s the kind of question that looks simple — until you blink and realize you're **ranking failover logic** with **tiers and sizes** in the mix 😅. Let’s break it down the way we always do and make sure it clicks hard.
 
@@ -2183,7 +2402,20 @@ A bit:
 
 🔥 Ready for more? Let’s keep going while the engine’s hot.
 
-<h5> Question 'SAA-Q118'</h5>
+---
+
+category: General
+questionId: saa-q118
+tags:
+
+- saa-c03
+  title: "SAA-Q118 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q118'
+
+Q118
 
 Thank you for sharing the AWS documentation excerpt — it significantly **alters the understanding** of the S3 Transfer Acceleration (S3TA) pricing. Let's revisit and **re-analyze** the question with this new information:
 
@@ -2282,7 +2514,20 @@ This is **key** — the **pricing model is performance-based**, not usage-based,
 
 Let me know if you'd like a corrected version of the original JS object or want to continue to the next question.
 
-<h5> Question 'SAA-Q119'</h5>
+---
+
+category: General
+questionId: saa-q119
+tags:
+
+- saa-c03
+  title: "SAA-Q119 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q119'
+
+Q119
 
 Great! Let’s break down this **SAA-C03 question** using your structured analysis approach:
 
@@ -2428,7 +2673,20 @@ This question combines real-time streaming, ordering, and low-ops. The best desi
 
 ---
 
-<h5> Question 'SAA-Q121'</h5>
+---
+
+category: General
+questionId: saa-q121
+tags:
+
+- saa-c03
+  title: "SAA-Q121 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q121'
+
+Q121
 
 ---
 
@@ -2597,7 +2855,20 @@ Yes, _intentionally tricky but fair_.
 
 ---
 
-<h5> Question 'SAA-Q122'</h5>
+---
+
+category: General
+questionId: saa-q122
+tags:
+
+- saa-c03
+  title: "SAA-Q122 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q122'
+
+Q122
 
 Great — let’s unpack this question thoroughly. Here's a full SAA-C03 style breakdown.
 
@@ -2760,7 +3031,20 @@ Yes — a **common exam trick**:
 
 Let me know when you're ready for the next one — I’m ready when you are!
 
-<h5> Question 'SAA-Q123'</h5>
+---
+
+category: General
+questionId: saa-q123
+tags:
+
+- saa-c03
+  title: "SAA-Q123 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q123'
+
+Q123
 
 Excellent — this one tests core AWS **security best practices** and aligns strongly with IAM concepts often emphasized in SAA-C03. Let’s break it down:
 
@@ -2910,7 +3194,20 @@ Yes — this is **standard AWS exam trickery**:
 
 Let me know when you're ready for the next one — I’m ready!
 
-<h5> Question 'SAA-Q124'</h5>
+---
+
+category: General
+questionId: saa-q124
+tags:
+
+- saa-c03
+  title: "SAA-Q124 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q124'
+
+Q124
 
 Excellent — this question targets **EBS volume types**, specifically **performance (PIOPS)** and **multi-attach capabilities**, which are **core topics** in the AWS Certified Solutions Architect – Associate exam.
 
@@ -3097,7 +3394,21 @@ Yes — **deliberately tricky**:
 
 Ready when you are for the next one!
 
-<h5> Question 'SAA-Q125'</h5> 
+---
+
+category: General
+questionId: saa-q125
+tags:
+
+- saa-c03
+  title: "SAA-Q125 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q125'
+
+Q125
+
 Great — this question deals with **Auto Scaling strategies for predictable workloads**, a frequent and practical topic in the **SAA-C03** exam.
 
 ---
@@ -3251,7 +3562,21 @@ Configure your Auto Scaling group by creating a scheduled action that kicks-off 
 
 ---
 
-<h5> Question 'SAA-Q126'</h5> 
+---
+
+category: General
+questionId: saa-q126
+tags:
+
+- saa-c03
+  title: "SAA-Q126 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q126'
+
+Q126
+
 Yes, I’m here — and ready! Let's dive into the **live leaderboard question**, step by step using the same full breakdown you requested.
 
 ---
@@ -3407,7 +3732,21 @@ Yes — **subtly tricky**:
 
 Ready when you are with the next one!
 
-<h5> Question 'SAA-Q127'</h5> 
+---
+
+category: General
+questionId: saa-q127
+tags:
+
+- saa-c03
+  title: "SAA-Q127 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q127'
+
+Q127
+
 Excellent — this is a **conceptual clarity question** around **RDS Multi-AZ vs. Read Replicas**, a popular SAA-C03 topic because AWS loves to test your understanding of **replication types** and **use cases**.
 
 Let’s break it down:
@@ -3576,7 +3915,20 @@ Yes — very much:
 
 ---
 
-<h5> Question 'SAA-Q128'</h5>
+---
+
+category: General
+questionId: saa-q128
+tags:
+
+- saa-c03
+  title: "SAA-Q128 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q128'
+
+Q128
 
 Great — this question dives into **CloudFront’s multi-tier caching architecture**, specifically the behavior of **regional edge caches** and **when they are bypassed**. This is a strong **SAA-C03 exam-style** scenario.
 
@@ -3724,7 +4076,20 @@ Yes — the trick is in **differentiating static vs. dynamic content**, and unde
 
 Let me know when you're ready with the next question — I’m ready to keep going!
 
-<h5> Question 'SAA-Q129'</h5>
+---
+
+category: General
+questionId: saa-q129
+tags:
+
+- saa-c03
+  title: "SAA-Q129 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q129'
+
+Q129
 
 Let’s break down this **Amazon EFS access control** question. It's a well-crafted multi-select that targets a mix of **network-layer**, **IAM-layer**, and **application-layer** controls — classic SAA-C03 territory.
 
@@ -3888,7 +4253,20 @@ Yes — especially:
 
 ---
 
-<h5> Question 'SAA-Q130'</h5>
+---
+
+category: General
+questionId: saa-q130
+tags:
+
+- saa-c03
+  title: "SAA-Q130 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q130'
+
+Q130
 
 Excellent — this is a performance-oriented **Amazon S3 scalability** question, and it's very relevant to the **SAA-C03 exam**. It deals with S3 request rates, key prefix optimization, and cost-efficiency under heavy load.
 
@@ -4031,7 +4409,20 @@ Yes — subtly.
 ✅ Change the application architecture to create customer-specific custom prefixes within the single bucket and then upload the daily files into those prefixed locations
 ```
 
-<h5>Question 'SAA-Q131'</h5>
+---
+
+category: General
+questionId: saa-q131
+tags:
+
+- saa-c03
+  title: "SAA-Q131 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q131'
+
+Q131
 
 Excellent — this question is centered around **Amazon EC2 boot volume limitations**, particularly understanding **which EBS volume types and storage options can or cannot be used as root/boot volumes**. It’s a commonly misunderstood topic and a good fit for the **SAA-C03 exam**.
 
@@ -4189,7 +4580,20 @@ Yes — very subtle:
 
 ---
 
-<h5>Question 'SAA-Q132'</h5>
+---
+
+category: General
+questionId: saa-q132
+tags:
+
+- saa-c03
+  title: "SAA-Q132 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q132'
+
+Q132
 
 Excellent — this is a precise and nuanced **S3 Object Lock & retention** question, focused on **compliance configurations**. AWS often tests knowledge around **retention enforcement**, **Object Lock behavior**, and how **versioning interacts** with those settings.
 
@@ -4349,7 +4753,20 @@ Yes — they target **common misconceptions**:
 
 ---
 
-<h5>Question 'SAA-Q133'</h5>
+---
+
+category: General
+questionId: saa-q133
+tags:
+
+- saa-c03
+  title: "SAA-Q133 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q133'
+
+Q133
 
 Great — this is a classic **S3 storage class optimization** question, focused on **short-lived**, **high-access**, **analytical workloads**. The scenario is subtle and realistic — **exactly the kind of question you’ll see on the SAA-C03 exam**.
 
@@ -4518,7 +4935,20 @@ Yes — and intentionally so:
 
 Let’s keep the streak going — send the next question when you’re ready!
 
-<h5>Question 'SAA-Q134'</h5>
+---
+
+category: General
+questionId: saa-q134
+tags:
+
+- saa-c03
+  title: "SAA-Q134 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q134'
+
+Q134
 
 Absolutely — here’s the **complete, structured analysis** in the format you’ve been using throughout the SAA-C03 practice review:
 
@@ -4664,7 +5094,20 @@ Yes — this is a **textbook AWS exam trick**:
 
 ---
 
-<h5>Question 'SAA-Q135'</h5>
+---
+
+category: General
+questionId: saa-q135
+tags:
+
+- saa-c03
+  title: "SAA-Q135 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q135'
+
+Q135
 
 Excellent — this is a **realistic Auto Scaling Group (ASG) maintenance scenario**, and it's a great example of the kind of multi-select question you'll see on the **SAA-C03 exam**. It combines **Auto Scaling process suspension**, **lifecycle states**, and **health checks**.
 
@@ -4826,7 +5269,21 @@ Yes — this is a **subtly tricky question**:
 
 ---
 
-<h5>Question 'SAA-Q136'</h5> 
+---
+
+category: General
+questionId: saa-q136
+tags:
+
+- saa-c03
+  title: "SAA-Q136 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q136'
+
+Q136
+
 Great—this looks like a **follow-up variant** of the earlier lifecycle transition question, and it’s perfect for reinforcing S3 concepts before your exam. Let’s walk through it using your 7-part deep dive format:
 
 ---
@@ -4960,7 +5417,21 @@ Avoid any lifecycle rule that **increases availability, durability, or class tie
 
 Would you like this converted into a ready-to-insert JS object like the previous ones?
 
-<h5>Question 'SAA-Q137'</h5> 
+---
+
+category: General
+questionId: saa-q137
+tags:
+
+- saa-c03
+  title: "SAA-Q137 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q137'
+
+Q137
+
 Great—this is a classic **EC2 placement group question**, and it's a **realistic** type you could expect in the AWS SAA-C03 exam. Let’s analyze it using your 7-point framework and deep-dive into the AWS services involved.
 
 ---
@@ -5101,7 +5572,20 @@ This is the textbook recommendation for **tightly-coupled compute tasks** like s
 
 Would you like the JavaScript object version of this for DB insertion?
 
-<h5>Question 'SAA-Q138'</h5>
+---
+
+category: General
+questionId: saa-q138
+tags:
+
+- saa-c03
+  title: "SAA-Q138 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q138'
+
+Q138
 
 Great—this is a **hybrid migration + Windows-native storage** question, and it's highly relevant to both **SAA-C03** and **real-world enterprise migration projects**.
 
@@ -5225,7 +5709,21 @@ Use the **context clues** ("support DFS") to eliminate non-storage or non-Window
 
 Would you like the JavaScript object version for your database next?
 
-<h5>Question 'SAA-Q139'</h5> 
+---
+
+category: General
+questionId: saa-q139
+tags:
+
+- saa-c03
+  title: "SAA-Q139 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q139'
+
+Q139
+
 Excellent—this is a **classic SAA-C03 question** that blends **high availability**, **Auto Scaling**, and **load balancing**, with a specific emphasis on **content-based routing**.
 
 Let’s break it down using your exam analysis framework.
@@ -5369,7 +5867,21 @@ That implies:
 
 Would you like the structured JavaScript object next for your database?
 
-<h5>Question 'SAA-Q140'</h5> 
+---
+
+category: General
+questionId: saa-q140
+tags:
+
+- saa-c03
+  title: "SAA-Q140 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q140'
+
+Q140
+
 Absolutely — let's treat this as a **fresh SAA-C03 exam question** and go through it **step-by-step using the full exam-style breakdown** you're building your app around.
 
 ---
@@ -5511,7 +6023,20 @@ Yes — especially:
 
 Ready for the next question? Or want to go back and flag older questions for version sensitivity?
 
-<h5>Question 'SAA-Q141'</h5>
+---
+
+category: General
+questionId: saa-q141
+tags:
+
+- saa-c03
+  title: "SAA-Q141 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q141'
+
+Q141
 
 Let's break down this question as if we just encountered it in the SAA-C03 exam — using your 9-point breakdown framework.
 
@@ -5650,7 +6175,20 @@ Yes — Option 2 is especially tricky. It **assumes** Fargate and EC2 are priced
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q142'</h5>
+---
+
+category: General
+questionId: saa-q142
+tags:
+
+- saa-c03
+  title: "SAA-Q142 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q142'
+
+Q142
 
 Great — let's break this down SAA-C03 style:
 
@@ -5719,7 +6257,20 @@ If a question involves:
 
 Let me know if you'd like the next question!
 
-<h5>Question 'SAA-Q143'</h5>
+---
+
+category: General
+questionId: saa-q143
+tags:
+
+- saa-c03
+  title: "SAA-Q143 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q143'
+
+Q143
 
 Great — let’s break this SAA-C03 question down using your 7-point + bonus AWS services framework. This question covers **cross-account access**, a key concept tested often in real exams.
 
@@ -5871,7 +6422,20 @@ This question checks your knowledge of:
 
 Let me know if you want to flag this one in your DB as **security-priority** or keep going with the next question!
 
-<h5>Question 'SAA-Q144'</h5>
+---
+
+category: General
+questionId: saa-q144
+tags:
+
+- saa-c03
+  title: "SAA-Q144 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q144'
+
+Q144
 
 Great — let’s go deep on this SAA-C03 question using your standard AWS question analysis framework. This one tests a nuanced understanding of **EC2 storage options** and **cost-performance tradeoffs**.
 
@@ -6044,7 +6608,20 @@ And since the **dataset is replicated across instances**, **durability is not a 
 
 ✅ Ready for the next question whenever you are!
 
-<h5>Question 'SAA-Q145'</h5>
+---
+
+category: General
+questionId: saa-q145
+tags:
+
+- saa-c03
+  title: "SAA-Q145 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q145'
+
+Q145
 
 This is a fantastic question to test your **understanding of SQS behavior, FIFO constraints, throughput limitations, and message ordering guarantees**. Let’s break it down SAA-C03 style using your 7-point analysis method.
 
@@ -6213,7 +6790,20 @@ The question subtly includes a throughput constraint (**1000 messages/sec**) to 
 
 ✅ Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q146'</h5>
+---
+
+category: General
+questionId: saa-q146
+tags:
+
+- saa-c03
+  title: "SAA-Q146 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q146'
+
+Q146
 
 You're absolutely on a roll — and no, these aren’t just low-hanging fruits; you’re navigating the **decision nuance** in scaling and monitoring questions, which are core to real-world AWS architecture design.
 
@@ -6378,7 +6968,21 @@ Let’s take this question apart using your complete exam strategy.
 
 ---
 
-<h5>Question 'SAA-Q150'</h5> 
+---
+
+category: General
+questionId: saa-q150
+tags:
+
+- saa-c03
+  title: "SAA-Q150 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q150'
+
+Q150
+
 This is a fantastic, high-value SAA-C03 question that hits on **real-time stream processing**, **cost optimization**, and **serverless data transformation** — all core AWS exam topics.
 
 Let’s walk through your **full analysis**.

@@ -423,13 +423,24 @@ html {
 }
 
 /* Markdown Scoped Styling */
+
 .markdown-body h1,
 .markdown-body h2,
-.markdown-body h3,
 .markdown-body h4,
 .markdown-body h5 {
   margin-top: 1.5em;
   color: inherit;
+}
+
+.markdown-body h2 {
+  margin-top: 1.5em;
+  font-size: x-large;
+  color: cyan;
+}
+
+.markdown-body h3 {
+  margin-top: 1.5em;
+  color: orange;
 }
 
 .markdown-body table {
@@ -443,4 +454,16 @@ html {
   color: #f8f8f2;
   padding: 8px;
   border-radius: 4px;
+}
+
+.saa-label {
+  font-size: 1.45rem; /* Bigger */
+  color: #b306de; /* AWS blue or tweak as needed */
+  background-color: #363636;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 0.5rem 0;
+  font-weight: bold;
+  text-transform: uppercase;
 }

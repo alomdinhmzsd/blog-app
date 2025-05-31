@@ -1,6 +1,12 @@
-<h5>Question 'SAA-Q151'</h5>
+---
+category: General
+questionId: saa-q151
+tags:
+  - saa-c03
+title: "SAA-Q151 \u2013 AWS Practice Question"
+---
 
-Here’s a full analysis of the question in your requested 8-point format:
+### Question 'SAA-Q151'
 
 ---
 
@@ -36,14 +42,12 @@ A car company wants to create a service where cars send sensor data automaticall
 ### ✅ Correct Answer and Explanation
 
 > **Correct Answer: Ingest the sensor data in an Amazon SQS standard queue, which is polled by a Lambda function in batches and the data is written into an auto-scaled DynamoDB table for downstream processing**
+> | Reason | Explanation |
+> | ------------------------ | -------------------------------------------------------------------------------------- |
+> | **SQS (standard queue)** | Serverless, decouples producers (cars) from consumers (Lambda); scales automatically. |
+> | **Lambda** | Serverless compute; polls SQS automatically and scales based on message volume. |
 
-| Reason                   | Explanation                                                                            |
-| ------------------------ | -------------------------------------------------------------------------------------- |
-| **SQS (standard queue)** | Serverless, decouples producers (cars) from consumers (Lambda); scales automatically.  |
-| **Lambda**               | Serverless compute; polls SQS automatically and scales based on message volume.        |
-| **DynamoDB**             | Fully managed NoSQL DB; integrates seamlessly with Lambda and auto-scales with demand. |
-
----
+## | **DynamoDB** | Fully managed NoSQL DB; integrates seamlessly with Lambda and auto-scales with demand. |
 
 ### ❌ Incorrect Options Breakdown
 
@@ -110,7 +114,20 @@ A car company wants to create a service where cars send sensor data automaticall
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q152'</h5>
+---
+
+category: General
+questionId: saa-q152
+tags:
+
+- saa-c03
+  title: "SAA-Q152 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q152'
+
+Q152
 
 Here’s the full breakdown of the second question using your requested 8-point structure:
 
@@ -148,13 +165,11 @@ A new DevOps engineer wants to **understand the difference between RDS Multi-AZ 
 ### ✅ 4. Correct Answer and Explanation
 
 > **Correct Answer: Multi-AZ follows synchronous replication and spans at least two Availability Zones within a single region. Read replicas follow asynchronous replication and can be within an Availability Zone, Cross-AZ, or Cross-Region**
+> | Component | Details |
+> | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | **Multi-AZ** | Uses **synchronous** replication → the standby always stays in sync with the primary for failover. Only spans **AZs within the same region**. |
 
-| Component         | Details                                                                                                                                                  |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Multi-AZ**      | Uses **synchronous** replication → the standby always stays in sync with the primary for failover. Only spans **AZs within the same region**.            |
-| **Read Replicas** | Use **asynchronous** replication → there may be replication lag. Can span **AZs, same region, or different regions**. Best for **read scaling**, not HA. |
-
----
+## | **Read Replicas** | Use **asynchronous** replication → there may be replication lag. Can span **AZs, same region, or different regions**. Best for **read scaling**, not HA. |
 
 ### ❌ Incorrect Options Breakdown
 
@@ -228,7 +243,20 @@ A new DevOps engineer wants to **understand the difference between RDS Multi-AZ 
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q153'</h5>
+---
+
+category: General
+questionId: saa-q153
+tags:
+
+- saa-c03
+  title: "SAA-Q153 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q153'
+
+Q153
 
 Here’s a full breakdown of the SAA-C03 style question using your detailed 8-point format:
 
@@ -271,13 +299,11 @@ A company uses Amazon S3 to store **sensitive customer data**. They want to enfo
 >
 > - **"When you apply a retention period to an object version explicitly, you specify a Retain Until Date for the object version"**
 > - **"Different versions of a single object can have different retention modes and periods"**
+>   | Correct Option | Why It’s Right |
+>   | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+>   | ✅ **Explicit Retain Until Date** | When you set retention **per object version**, you can define a `RetainUntilDate`—this is how Object Lock is configured at the version level. |
 
-| Correct Option                                  | Why It’s Right                                                                                                                                |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✅ **Explicit Retain Until Date**               | When you set retention **per object version**, you can define a `RetainUntilDate`—this is how Object Lock is configured at the version level. |
-| ✅ **Different Versions = Different Retention** | Object Lock settings apply **per version**, so different versions of the same object can have **different retention periods or modes**.       |
-
----
+## | ✅ **Different Versions = Different Retention** | Object Lock settings apply **per version**, so different versions of the same object can have **different retention periods or modes**. |
 
 ### ❌ Incorrect Options Breakdown
 
@@ -348,7 +374,20 @@ A company uses Amazon S3 to store **sensitive customer data**. They want to enfo
 
 Let me know when you're ready to dive into the next one!
 
-<h5>Question 'SAA-Q154'</h5>
+---
+
+category: General
+questionId: saa-q154
+tags:
+
+- saa-c03
+  title: "SAA-Q154 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q154'
+
+Q154
 
 Here’s a full breakdown of this SAA-C03 style question in your 8-point format:
 
@@ -385,14 +424,12 @@ A streaming service stores **temporary (24-hour)** query results in S3. These re
 ### ✅ 4. Correct Answer and Explanation
 
 > **Correct Answer: Store the intermediary query results in S3 Standard storage class**
+> | Reason | Explanation |
+> | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | **Frequent access** | The query results are _heavily referenced_, meaning they're accessed often → **S3 Standard is optimized for this**. |
+> | **Short retention (24 hours)** | Other classes like IA, One Zone-IA, and Intelligent-Tiering incur **minimum storage duration charges** (30/90 days), making them **more expensive** for short-term objects. |
 
-| Reason                           | Explanation                                                                                                                                                                 |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Frequent access**              | The query results are _heavily referenced_, meaning they're accessed often → **S3 Standard is optimized for this**.                                                         |
-| **Short retention (24 hours)**   | Other classes like IA, One Zone-IA, and Intelligent-Tiering incur **minimum storage duration charges** (30/90 days), making them **more expensive** for short-term objects. |
-| **Cost-effective in short-term** | Though S3 Standard is not the cheapest per GB, it's the most **cost-effective** when data is accessed frequently **and only stored for a short period**.                    |
-
----
+## | **Cost-effective in short-term** | Though S3 Standard is not the cheapest per GB, it's the most **cost-effective** when data is accessed frequently **and only stored for a short period**. |
 
 ### ❌ Incorrect Options Breakdown
 
@@ -456,7 +493,20 @@ A streaming service stores **temporary (24-hour)** query results in S3. These re
 
 Let me know when you're ready to move to the next question!
 
-<h5>Question 'SAA-Q156'</h5>
+---
+
+category: General
+questionId: saa-q156
+tags:
+
+- saa-c03
+  title: "SAA-Q156 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q156'
+
+Q156
 
 Here’s a complete breakdown of this AWS SAA-C03 exam-style question using your preferred 8-point format:
 
@@ -494,10 +544,9 @@ Which option allows this kind of setup?
 ### ✅ 4. Correct Answer and Explanation
 
 > ✅ **Correct Answer: You can only use a launch template to provision capacity across multiple instance types using both On-Demand Instances and Spot Instances to achieve the desired scale, performance, and cost**
-
-| Reason               | Explanation                     |
-| -------------------- | ------------------------------- |
-| **Launch Templates** | Support advanced features like: |
+> | Reason | Explanation |
+> | -------------------- | ------------------------------- |
+> | **Launch Templates** | Support advanced features like: |
 
 - Multiple instance types
 - Mixed instance purchasing models (Spot + On-Demand)
@@ -572,7 +621,20 @@ Which option allows this kind of setup?
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q157'</h5>
+---
+
+category: General
+questionId: saa-q157
+tags:
+
+- saa-c03
+  title: "SAA-Q157 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q157'
+
+Q157
 
 Here is the full breakdown of this SAA-C03 style question using your preferred 8-point structure:
 
@@ -610,14 +672,12 @@ What’s the **cheapest solution** to achieve this?
 ### ✅ 4. Correct Answer and Explanation
 
 > ✅ **Correct Answer: Create a VPC in an account and share one or more of its subnets with the other accounts using Resource Access Manager**
+> | Reason | Explanation |
+> | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | **VPC Sharing via AWS RAM** | Allows multiple accounts to **launch EC2 instances into a shared VPC**, enabling **private communication** within the same VPC and **no data transfer charges**. |
+> | **Lowest cost** | There’s **no cost** to share a VPC using RAM. All traffic remains within the shared VPC = **no Transit Gateway/VPC Peering data transfer charges**. |
 
-| Reason                      | Explanation                                                                                                                                                      |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **VPC Sharing via AWS RAM** | Allows multiple accounts to **launch EC2 instances into a shared VPC**, enabling **private communication** within the same VPC and **no data transfer charges**. |
-| **Lowest cost**             | There’s **no cost** to share a VPC using RAM. All traffic remains within the shared VPC = **no Transit Gateway/VPC Peering data transfer charges**.              |
-| **Best for same region**    | Works perfectly when all accounts are within the **same AWS Region**.                                                                                            |
-
----
+## | **Best for same region** | Works perfectly when all accounts are within the **same AWS Region**. |
 
 ### ❌ Incorrect Options Breakdown
 
@@ -684,7 +744,20 @@ What’s the **cheapest solution** to achieve this?
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q158'</h5>
+---
+
+category: General
+questionId: saa-q158
+tags:
+
+- saa-c03
+  title: "SAA-Q158 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q158'
+
+Q158
 
 Here’s a detailed breakdown of this **AWS SAA-C03-style question** using your requested **8-point framework**:
 
@@ -806,7 +879,21 @@ The question is:
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q159'</h5>
+---
+
+category: General
+questionId: saa-q159
+tags:
+
+- saa-c03
+  title: "SAA-Q159 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q159'
+
+Q159
+
 Here’s the full breakdown of this **AWS SAA-C03 cost optimization question**, using your 8-point analysis structure:
 
 ---
@@ -846,14 +933,12 @@ You're asked to choose the **most cost-efficient** strategy to **cover the stead
 ### ✅ 4. Correct Answer and Explanation
 
 > ✅ **Correct Answer: Purchase 80 reserved instances. Provision additional on-demand and spot instances per the workload demand (Use Auto Scaling Group with launch template to provision the mix of on-demand and spot instances)**
+> | Reason | Explanation |
+> | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | **Reserved Instances (RIs)** | Best for **steady-state workloads**—cheaper than On-Demand over time. Since 80 instances are used 80% of the time, RIs are **most cost-optimal** for that portion. |
+> | **Spot + On-Demand via ASG** | Use Auto Scaling with launch templates and a mixed instances policy to scale up **Spot instances** first (cheap but interruptible), then fallback to On-Demand if needed. |
 
-| Reason                       | Explanation                                                                                                                                                               |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Reserved Instances (RIs)** | Best for **steady-state workloads**—cheaper than On-Demand over time. Since 80 instances are used 80% of the time, RIs are **most cost-optimal** for that portion.        |
-| **Spot + On-Demand via ASG** | Use Auto Scaling with launch templates and a mixed instances policy to scale up **Spot instances** first (cheap but interruptible), then fallback to On-Demand if needed. |
-| **Launch Template**          | Required to configure **mixed instance types and purchasing options** in a modern Auto Scaling Group.                                                                     |
-
----
+## | **Launch Template** | Required to configure **mixed instance types and purchasing options** in a modern Auto Scaling Group. |
 
 ### ❌ Incorrect Options Breakdown
 
@@ -919,7 +1004,20 @@ You're asked to choose the **most cost-efficient** strategy to **cover the stead
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q160'</h5>
+---
+
+category: General
+questionId: saa-q160
+tags:
+
+- saa-c03
+  title: "SAA-Q160 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q160'
+
+Q160
 
 Here’s a complete breakdown of this **AWS SAA-C03 question** using your 8-point format:
 
@@ -1039,7 +1137,20 @@ The question is:
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q161'</h5>
+---
+
+category: General
+questionId: saa-q161
+tags:
+
+- saa-c03
+  title: "SAA-Q161 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q161'
+
+Q161
 
 Here's the complete analysis of this AWS SAA-C03 exam-style question using your 8-point format:
 
@@ -1077,13 +1188,11 @@ Which encryption option in S3 allows them to **retain full control** over their 
 ### ✅ 4. Correct Answer and Explanation
 
 > ✅ **Correct Answer: Server-Side Encryption with Customer-Provided Keys (SSE-C)**
+> | Why It's Correct |
+> | -------------------------------------------------------------------------------------------------------------------------------------------- |
+> | **SSE-C** allows the client (you) to provide the encryption key with each PUT/GET request. AWS **does not store or manage the keys**. |
 
-| Why It's Correct                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------- |
-| **SSE-C** allows the client (you) to provide the encryption key with each PUT/GET request. AWS **does not store or manage the keys**.        |
-| Ideal for companies with **on-premises key management systems** or **custom compliance requirements** that prohibit cloud-based key storage. |
-
----
+## | Ideal for companies with **on-premises key management systems** or **custom compliance requirements** that prohibit cloud-based key storage. |
 
 ### ❌ Incorrect Options Breakdown
 
@@ -1147,7 +1256,20 @@ Which encryption option in S3 allows them to **retain full control** over their 
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q162'</h5>
+---
+
+category: General
+questionId: saa-q162
+tags:
+
+- saa-c03
+  title: "SAA-Q162 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q162'
+
+Q162
 
 Let's break down this SAA-C03-style exam question with a deep analysis using your structured framework. Here’s the detailed breakdown and guidance:
 
@@ -1189,15 +1311,14 @@ Why is the Auto Scaling group _not_ shutting down an unhealthy EC2 instance? You
 ### 4. ✅ **Correct Answers and Explanations:**
 
 Let's review each option.
-
-| Option                                                                                                                                   | Correct?     | Explanation                                                                                                                                                                                    |
+| Option | Correct? | Explanation |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🔸 **A custom health check might have failed. ASG does not terminate instances that are set unhealthy by custom checks**                 | ❌ Incorrect | ASG **can** act on _custom health checks_ **only** if integrated via **CloudWatch alarms** and **Lifecycle Hooks**. By default, ASG does not use "custom checks" unless explicitly configured. |
-| ✅ **The instance has failed the ELB health check status**                                                                               | ✅ Correct   | If ASG uses **ELB health checks**, it will terminate instances marked unhealthy **by the ELB** — but **only if** this health check type is enabled in ASG.                                     |
-| 🔸 **A user updated the ASG configuration and increased the minimum number of instances, forcing ASG to keep unhealthy instances alive** | ❌ Incorrect | ASG will _still_ terminate and **replace** unhealthy instances even if the **minimum count is met**. The idea is to always keep the _minimum healthy_.                                         |
-| ✅ **The instance may be in Impaired status**                                                                                            | ✅ Correct   | ASG relies on **EC2 status checks** or **ELB checks**. If the EC2 is _only_ "Impaired", ASG might wait to see if it recovers — especially if within **grace period**.                          |
-| 🔸 **The EC2 instance could be a Spot instance type, which cannot be terminated by ASG**                                                 | ❌ Incorrect | ASG **can** manage and terminate **Spot instances** as part of its group, just like On-Demand ones.                                                                                            |
-| ✅ **The health check grace period for the instance has not expired**                                                                    | ✅ Correct   | During the **grace period** (default: 300 seconds), ASG gives the instance time to boot before taking action. If the instance fails during this time, ASG **won’t terminate it immediately**.  |
+| 🔸 **A custom health check might have failed. ASG does not terminate instances that are set unhealthy by custom checks** | ❌ Incorrect | ASG **can** act on _custom health checks_ **only** if integrated via **CloudWatch alarms** and **Lifecycle Hooks**. By default, ASG does not use "custom checks" unless explicitly configured. |
+| ✅ **The instance has failed the ELB health check status** | ✅ Correct | If ASG uses **ELB health checks**, it will terminate instances marked unhealthy **by the ELB** — but **only if** this health check type is enabled in ASG. |
+| 🔸 **A user updated the ASG configuration and increased the minimum number of instances, forcing ASG to keep unhealthy instances alive** | ❌ Incorrect | ASG will _still_ terminate and **replace** unhealthy instances even if the **minimum count is met**. The idea is to always keep the _minimum healthy_. |
+| ✅ **The instance may be in Impaired status** | ✅ Correct | ASG relies on **EC2 status checks** or **ELB checks**. If the EC2 is _only_ "Impaired", ASG might wait to see if it recovers — especially if within **grace period**. |
+| 🔸 **The EC2 instance could be a Spot instance type, which cannot be terminated by ASG** | ❌ Incorrect | ASG **can** manage and terminate **Spot instances** as part of its group, just like On-Demand ones. |
+| ✅ **The health check grace period for the instance has not expired** | ✅ Correct | During the **grace period** (default: 300 seconds), ASG gives the instance time to boot before taking action. If the instance fails during this time, ASG **won’t terminate it immediately**. |
 
 ---
 
@@ -1270,7 +1391,20 @@ Always ask: _“Is this behavior part of Auto Scaling’s core design, or do I n
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q163'</h5>
+---
+
+category: General
+questionId: saa-q163
+tags:
+
+- saa-c03
+  title: "SAA-Q163 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q163'
+
+Q163
 
 Let's walk through this **SAA-C03** style question using your structured analysis template.
 
@@ -1390,7 +1524,20 @@ Whenever AWS asks **“least development effort”**, prioritize **fully managed
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q164'</h5>
+---
+
+category: General
+questionId: saa-q164
+tags:
+
+- saa-c03
+  title: "SAA-Q164 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q164'
+
+Q164
 
 Let’s break this question down using your structured analysis format.
 
@@ -1506,7 +1653,20 @@ Memorize:
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q165'</h5>
+---
+
+category: General
+questionId: saa-q165
+tags:
+
+- saa-c03
+  title: "SAA-Q165 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q165'
+
+Q165
 
 Let’s break this one down using your standard SAA-C03 analysis format.
 
@@ -1557,13 +1717,12 @@ To migrate an AWS account from one organization to another:
 4. The **member account must accept the invitation**.
 
 So:
-
-| Option                                                                                                                                                                                        | Correct?                                                                                      | Explanation |
+| Option | Correct? | Explanation |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------- |
-| ✅ **Remove the member account from the old organization. Send an invite to the member account from the new Organization. Accept the invite to the new organization from the member account** | ✅ Correct — this is the **correct sequence**                                                 |             |
-| ❌ **Open an AWS Support ticket to ask them to migrate the account**                                                                                                                          | ❌ Incorrect — this is a **self-service** process, no support ticket needed                   |             |
-| ❌ **Send an invite to the new organization. Remove the member account from the old organization. Accept the invite to the new organization from the member account**                         | ❌ Invalid order — cannot receive invites while still a member of Org A                       |             |
-| ❌ **Send an invite to the new organization. Accept the invite to the new organization from the member account. Remove the member account from the old organization**                         | ❌ Impossible — accounts in Org A **cannot accept invites** from Org B until they leave Org A |             |
+| ✅ **Remove the member account from the old organization. Send an invite to the member account from the new Organization. Accept the invite to the new organization from the member account** | ✅ Correct — this is the **correct sequence** | |
+| ❌ **Open an AWS Support ticket to ask them to migrate the account** | ❌ Incorrect — this is a **self-service** process, no support ticket needed | |
+| ❌ **Send an invite to the new organization. Remove the member account from the old organization. Accept the invite to the new organization from the member account** | ❌ Invalid order — cannot receive invites while still a member of Org A | |
+| ❌ **Send an invite to the new organization. Accept the invite to the new organization from the member account. Remove the member account from the old organization** | ❌ Impossible — accounts in Org A **cannot accept invites** from Org B until they leave Org A | |
 
 ---
 
@@ -1631,7 +1790,20 @@ Use this mental model:
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q166'</h5>
+---
+
+category: General
+questionId: saa-q166
+tags:
+
+- saa-c03
+  title: "SAA-Q166 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q166'
+
+Q166
 
 Let’s walk through this SAA-C03 question using your structured deep-dive format.
 
@@ -1746,7 +1918,20 @@ When you see **“in-memory” + “restart/stop/start”**, think:
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q167'</h5>
+---
+
+category: General
+questionId: saa-q167
+tags:
+
+- saa-c03
+  title: "SAA-Q167 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q167'
+
+Q167
 
 Here’s **Take Two** — a complete analysis based on updated insight from AWS documentation and your Spot Fleet reference.
 
@@ -1849,7 +2034,20 @@ You run a **short, repeatable job** once a month, distributed across multiple EC
 
 Let me know when you’re ready for the next question!
 
-<h5>Question 'SAA-Q168'</h5>
+---
+
+category: General
+questionId: saa-q168
+tags:
+
+- saa-c03
+  title: "SAA-Q168 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q168'
+
+Q168
 
 Let's break this question down using your full **SAA-C03 exam-style analysis**.
 
@@ -1969,7 +2167,20 @@ Which AWS feature can **reduce the startup time** the most?
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q169'</h5>
+---
+
+category: General
+questionId: saa-q169
+tags:
+
+- saa-c03
+  title: "SAA-Q169 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q169'
+
+Q169
 
 Let’s analyze this question using your structured **SAA-C03 practice exam breakdown** format.
 
@@ -2091,7 +2302,20 @@ They’re sending **key-value data** every **minute** from **many cities**. You 
 
 Let me know when you’re ready for the next question!
 
-<h5>Question 'SAA-Q170'</h5>
+---
+
+category: General
+questionId: saa-q170
+tags:
+
+- saa-c03
+  title: "SAA-Q170 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q170'
+
+Q170
 
 Let’s break this question down using your full **SAA-C03 analysis format**.
 
@@ -2213,7 +2437,20 @@ Why?
 
 Let me know when you’re ready for the next question!
 
-<h5>Question 'SAA-Q171'</h5>
+---
+
+category: General
+questionId: saa-q171
+tags:
+
+- saa-c03
+  title: "SAA-Q171 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q171'
+
+Q171
 
 Let’s walk through this question using your structured **SAA-C03 exam breakdown** format.
 
@@ -2335,7 +2572,20 @@ How do you make sure those long-running requests **finish without being cut off*
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q172'</h5>
+---
+
+category: General
+questionId: saa-q172
+tags:
+
+- saa-c03
+  title: "SAA-Q172 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q172'
+
+Q172
 
 Let’s analyze this **SAA-C03** style question using your structured breakdown format.
 
@@ -2461,7 +2711,20 @@ Which EC2 placement group type should you use to ensure **failure isolation** an
 
 Let me know when you’re ready for the next question!
 
-<h5>Question 'SAA-Q173'</h5>
+---
+
+category: General
+questionId: saa-q173
+tags:
+
+- saa-c03
+  title: "SAA-Q173 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q173'
+
+Q173
 
 Let’s analyze this question using your structured **SAA-C03 practice exam format**.
 
@@ -2586,7 +2849,20 @@ They want a **global**, **high-performance**, **cost-effective** solution that *
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q174'</h5>
+---
+
+category: General
+questionId: saa-q174
+tags:
+
+- saa-c03
+  title: "SAA-Q174 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q174'
+
+Q174
 
 Let's break down this question using your structured **SAA-C03 exam preparation format**.
 
@@ -2633,15 +2909,14 @@ You have:
 ### 4. ✅ Correct Answers and Explanations
 
 Let’s walk through each option:
-
-| Option                                                                                                                              | Correct?                                                                                                                   | Explanation |
+| Option | Correct? | Explanation |
 | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| ✅ **The security group of the EC2 instances should have an inbound rule from the security group of the ALB on port 80**            | ✅ Correct — EC2 receives HTTP (port 80) traffic from the ALB                                                              |             |
-| ❌ **The security group of RDS should have an inbound rule from the security group of the EC2 instances in the ASG on port 80**     | ❌ Incorrect — PostgreSQL uses port **5432**, not 80                                                                       |             |
-| ✅ **The security group of RDS should have an inbound rule from the security group of the EC2 instances in the ASG on port 5432**   | ✅ Correct — EC2 instances access PostgreSQL via **port 5432**                                                             |             |
-| ❌ **The security group of the EC2 instances should have an inbound rule from the security group of the RDS database on port 5432** | ❌ Incorrect — EC2 is **initiating** the connection to RDS, not the other way around. No rule needed for RDS to access EC2 |             |
-| ❌ **The security group of the ALB should have an inbound rule from anywhere on port 443**                                          | ❌ Incorrect — the app is HTTP, not HTTPS. Port 443 is for **HTTPS**                                                       |             |
-| ✅ **The security group of the ALB should have an inbound rule from anywhere on port 80**                                           | ✅ Correct — HTTP traffic from users must be allowed on **port 80** from 0.0.0.0/0 (public internet)                       |             |
+| ✅ **The security group of the EC2 instances should have an inbound rule from the security group of the ALB on port 80** | ✅ Correct — EC2 receives HTTP (port 80) traffic from the ALB | |
+| ❌ **The security group of RDS should have an inbound rule from the security group of the EC2 instances in the ASG on port 80** | ❌ Incorrect — PostgreSQL uses port **5432**, not 80 | |
+| ✅ **The security group of RDS should have an inbound rule from the security group of the EC2 instances in the ASG on port 5432** | ✅ Correct — EC2 instances access PostgreSQL via **port 5432** | |
+| ❌ **The security group of the EC2 instances should have an inbound rule from the security group of the RDS database on port 5432** | ❌ Incorrect — EC2 is **initiating** the connection to RDS, not the other way around. No rule needed for RDS to access EC2 | |
+| ❌ **The security group of the ALB should have an inbound rule from anywhere on port 443** | ❌ Incorrect — the app is HTTP, not HTTPS. Port 443 is for **HTTPS** | |
+| ✅ **The security group of the ALB should have an inbound rule from anywhere on port 80** | ✅ Correct — HTTP traffic from users must be allowed on **port 80** from 0.0.0.0/0 (public internet) | |
 
 ---
 
@@ -2712,7 +2987,20 @@ Let’s walk through each option:
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q175'</h5>
+---
+
+category: General
+questionId: saa-q175
+tags:
+
+- saa-c03
+  title: "SAA-Q175 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q175'
+
+Q175
 
 Let’s analyze this **IAM policy question (saa-q175)** using your structured **SAA-C03 format**.
 
@@ -2850,7 +3138,21 @@ This IAM policy **allows launching EC2 instances** (`ec2:RunInstances`) — but 
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q176'</h5>
+---
+
+category: General
+questionId: saa-q176
+tags:
+
+- saa-c03
+  title: "SAA-Q176 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q176'
+
+Q176
+
 Let’s analyze this **API Gateway authentication** question using your structured **SAA-C03 exam format**.
 
 ---
@@ -2980,7 +3282,20 @@ What’s the **most integrated and best-fit AWS service** for this?
 
 Let me know when you're ready for the next question!
 
-<h5>Question 'SAA-Q177'</h5>
+---
+
+category: General
+questionId: saa-q177
+tags:
+
+- saa-c03
+  title: "SAA-Q177 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q177'
+
+Q177
 
 Let’s analyze this **AWS storage selection** question using your structured **SAA-C03 exam breakdown** format.
 
@@ -3102,7 +3417,20 @@ You need a **Linux-mountable file system** (like a shared drive) that starts off
 
 Let me know when you’re ready for the next question!
 
-<h5>Question 'SAA-Q178'</h5>
+---
+
+category: General
+questionId: saa-q178
+tags:
+
+- saa-c03
+  title: "SAA-Q178 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q178'
+
+Q178
 
 Thanks for uploading the additional screenshot. Now it makes sense — this is one of those **SAA-C03 exam-style "trick" questions** where all the key logic is hidden in **launch configuration vs. launch template priority**, based on the **default Auto Scaling termination policy**.
 
@@ -3115,13 +3443,12 @@ Let’s dissect the **puzzle-like answer options** and the logic used behind the
 > **"EC2 Auto Scaling must terminate an instance from AZ us-east-1a with 4 instances."**
 
 No extra info was provided in the original question, but the **answer options now give metadata**:
-
-| Instance | Metadata                                 |
+| Instance | Metadata |
 | -------- | ---------------------------------------- |
-| **A**    | Uses the **oldest launch template**      |
-| **B**    | Uses the **oldest launch configuration** |
-| **C**    | Uses the **newest launch configuration** |
-| **D**    | Closest to the **next billing hour**     |
+| **A** | Uses the **oldest launch template** |
+| **B** | Uses the **oldest launch configuration** |
+| **C** | Uses the **newest launch configuration** |
+| **D** | Closest to the **next billing hour** |
 
 ---
 
@@ -3185,7 +3512,20 @@ Here's the exact order followed by Auto Scaling during termination:
 
 Let me know when you’re ready for the next question!
 
-<h5>Question 'SAA-Q179'</h5>
+---
+
+category: General
+questionId: saa-q179
+tags:
+
+- saa-c03
+  title: "SAA-Q179 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q179'
+
+Q179
 
 Let’s analyze this **blue-green deployment with DNS caching concern** question using your structured **SAA-C03 exam approach**.
 
@@ -3309,7 +3649,20 @@ So, which AWS feature gives you **precise control over traffic shifting**, **wit
 
 Let me know when you’re ready for the next question!
 
-<h5>Question 'SAA-Q180'</h5>
+---
+
+category: General
+questionId: saa-q180
+tags:
+
+- saa-c03
+  title: "SAA-Q180 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q180'
+
+Q180
 
 Let’s wrap up today with a strong finish — breaking this down using your **SAA-C03-style deep analysis**.
 
@@ -3427,7 +3780,20 @@ What’s the **best, most secure way** to give it AWS permissions?
 
 Let me know when you’re ready for the next session — you’ve been crushing these questions today! 💪
 
-<h5>Question 'SAA-Q181'</h5>
+---
+
+category: General
+questionId: saa-q181
+tags:
+
+- saa-c03
+  title: "SAA-Q181 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q181'
+
+Q181
 
 Here's the full SAA-C03 exam-style breakdown in your requested format:
 
@@ -3538,7 +3904,20 @@ Use the mental shortcut:
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q182'</h5>
+---
+
+category: General
+questionId: saa-q182
+tags:
+
+- saa-c03
+  title: "SAA-Q182 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q182'
+
+Q182
 
 Here’s the full SAA-C03 exam analysis in your preferred markdown-ready format:
 
@@ -3650,7 +4029,20 @@ In VPC settings:
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q183'</h5>
+---
+
+category: General
+questionId: saa-q183
+tags:
+
+- saa-c03
+  title: "SAA-Q183 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q183'
+
+Q183
 
 Here is the full **SAA-C03 exam-style analysis** using your standardized format:
 
@@ -3761,7 +4153,21 @@ You want to **process and store logs** using a **serverless** and **fully-manage
 
 Ready when you are for the next one!
 
-<h5>Question 'SAA-Q184'</h5>
+---
+
+category: General
+questionId: saa-q184
+tags:
+
+- saa-c03
+  title: "SAA-Q184 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q184'
+
+Q184
+
 Here’s your full **SAA-C03 exam breakdown** using the standardized format:
 
 ---
@@ -3867,7 +4273,21 @@ Your startup runs **microservices**, and you want to **route traffic differently
 
 ---
 
-<h5>Question 'SAA-Q185'</h5>
+---
+
+category: General
+questionId: saa-q185
+tags:
+
+- saa-c03
+  title: "SAA-Q185 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q185'
+
+Q185
+
 Here is your full **SAA-C03 exam-style breakdown** using the standardized format:
 
 ---
@@ -3973,7 +4393,20 @@ When you see **"automatic rotation"** + **"database credentials"**, that’s **S
 
 Let me know when you’re ready for the next one!
 
-<h5>Question 'SAA-Q186'</h5>
+---
+
+category: General
+questionId: saa-q186
+tags:
+
+- saa-c03
+  title: "SAA-Q186 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q186'
+
+Q186
 
 Here's the full **SAA-C03 exam-style breakdown** using your preferred format:
 
@@ -4082,7 +4515,20 @@ You have **multiple AWS accounts** using **Transit Gateway** to connect their VP
 
 Let me know when you’re ready for the next one!
 
-<h5>Question 'SAA-Q187'</h5>
+---
+
+category: General
+questionId: saa-q187
+tags:
+
+- saa-c03
+  title: "SAA-Q187 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q187'
+
+Q187
 
 ---
 
@@ -4223,7 +4669,20 @@ If the condition key starts with `aws:`, it usually relates to **request context
 
 ---
 
-<h5>Question 'SAA-Q188'</h5>
+---
+
+category: General
+questionId: saa-q188
+tags:
+
+- saa-c03
+  title: "SAA-Q188 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q188'
+
+Q188
 
 Here is the complete **SAA-C03 exam-style analysis** for this Aurora read I/O latency scenario, structured in your preferred format:
 
@@ -4333,7 +4792,20 @@ Use **Aurora reader endpoint** to automatically load balance across all read rep
 
 Let me know when you’re ready for the next one!
 
-<h5>Question 'SAA-Q189'</h5>
+---
+
+category: General
+questionId: saa-q189
+tags:
+
+- saa-c03
+  title: "SAA-Q189 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q189'
+
+Q189
 
 Here is the full **SAA-C03 exam-style breakdown** for the **data lake optimization** question, using your structured format:
 
@@ -4449,7 +4921,21 @@ A **healthcare client** wants to build a **data lake** on AWS but wants to **kee
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q190'</h5>
+---
+
+category: General
+questionId: saa-q190
+tags:
+
+- saa-c03
+  title: "SAA-Q190 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q190'
+
+Q190
+
 Here is the full **SAA-C03 exam-style breakdown** for the IAM policy question regarding read-only S3 access:
 
 ---
@@ -4560,7 +5046,21 @@ You want to give a user or role **read-only access** to an S3 bucket named `mybu
 
 Let me know if you want a full JSON policy example to match this answer!
 
-<h5>Question 'SAA-Q191'</h5>
+---
+
+category: General
+questionId: saa-q191
+tags:
+
+- saa-c03
+  title: "SAA-Q191 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q191'
+
+Q191
+
 Here's the full **SAA-C03 exam-style breakdown** for the Spot + On-Demand Auto Scaling scenario, formatted in your preferred structure:
 
 ---
@@ -4665,7 +5165,21 @@ Launch Templates = **modern, flexible**, and required for mixed instances.
 
 ---
 
-<h5>Question 'SAA-Q192'</h5>
+---
+
+category: General
+questionId: saa-q192
+tags:
+
+- saa-c03
+  title: "SAA-Q192 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q192'
+
+Q192
+
 Here is the full **SAA-C03 exam-style breakdown** for the **cost-effective, concurrent file access** question, structured in your standard format:
 
 ---
@@ -4771,7 +5285,20 @@ EFS IA is **90% cheaper** than EFS Standard — perfect for workloads like **arc
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q193'</h5>
+---
+
+category: General
+questionId: saa-q193
+tags:
+
+- saa-c03
+  title: "SAA-Q193 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q193'
+
+Q193
 
 Here is the full **SAA-C03 exam-style breakdown** for the **Kinesis Agent to Firehose delivery stream** question, using your structured format:
 
@@ -4881,7 +5408,20 @@ You have **Kinesis Agent** set up to send **IoT data** directly to a **Kinesis F
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q194'</h5>
+---
+
+category: General
+questionId: saa-q194
+tags:
+
+- saa-c03
+  title: "SAA-Q194 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q194'
+
+Q194
 
 Here’s the complete **SAA-C03 exam-style breakdown** for the **EC2 User Data behavior** question, using your preferred structured format:
 
@@ -4993,7 +5533,20 @@ or script it into `/etc/rc.local` or systemd.
 
 ---
 
-<h5>Question 'SAA-Q195'</h5>
+---
+
+category: General
+questionId: saa-q195
+tags:
+
+- saa-c03
+  title: "SAA-Q195 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q195'
+
+Q195
 
 Here is the full **SAA-C03 exam-style breakdown** for the **S3 access control** question, using your structured format:
 
@@ -5099,7 +5652,20 @@ The company needs to control who can access S3 — both **specific users** and *
 
 ---
 
-<h5>Question 'SAA-Q196'</h5>
+---
+
+category: General
+questionId: saa-q196
+tags:
+
+- saa-c03
+  title: "SAA-Q196 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q196'
+
+Q196
 
 Here’s the full **SAA-C03 exam-style breakdown** for the **web app availability before go-live** scenario, using your structured format:
 
@@ -5208,7 +5774,20 @@ You’re about to **launch a web app** that uses **EC2 and RDS**, and you want t
 
 ---
 
-<h5>Question 'SAA-Q197'</h5>
+---
+
+category: General
+questionId: saa-q197
+tags:
+
+- saa-c03
+  title: "SAA-Q197 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q197'
+
+Q197
 
 Here is the full **SAA-C03 exam-style breakdown** for the **RDS Read Replicas and encryption** question, using your preferred format:
 
@@ -5316,7 +5895,21 @@ If you want an encrypted copy of an unencrypted DB:
 
 Let me know when you're ready for the next one!
 
-<h5>Question 'SAA-Q198'</h5>
+---
+
+category: General
+questionId: saa-q198
+tags:
+
+- saa-c03
+  title: "SAA-Q198 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q198'
+
+Q198
+
 Here is the full **SAA-C03 exam-style breakdown** for the **telemetry data isolation and ordering** question, following your structured format:
 
 ---
@@ -5429,7 +6022,20 @@ What’s the best AWS solution?
 
 Let me know if you want a Kinesis alternative version of this question added to your deck!
 
-<h5>Question 'SAA-Q199'</h5>
+---
+
+category: General
+questionId: saa-q199
+tags:
+
+- saa-c03
+  title: "SAA-Q199 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q199'
+
+Q199
 
 Here is the full **SAA-C03 exam-style breakdown** for the **Security Group configuration** question, using your structured format:
 
@@ -5602,7 +6208,20 @@ But sadly, **not present in the original options** as written.
 
 ---
 
-<h5>Question 'SAA-Q200'</h5>
+---
+
+category: General
+questionId: saa-q200
+tags:
+
+- saa-c03
+  title: "SAA-Q200 \u2013 AWS Practice Question"
+
+---
+
+### Question 'SAA-Q200'
+
+Q200
 
 ---
 
