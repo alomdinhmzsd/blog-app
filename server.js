@@ -1,8 +1,22 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const { marked } = require('marked');
+const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
+
+const md = new MarkdownIt({
+  html: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return `<pre class="hljs"><code>${
+          hljs.highlight(str, { language: lang }).value
+        }</code></pre>`;
+      } catch (_) {}
+    }
+    return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;
+  },
+});
 
 const app = express();
 const port = process.env.PORT || 4242;
@@ -90,7 +104,9 @@ app.get('/post/:category/:slug', (req, res) => {
         .replace(/<\/table>/g, '</table></div>');
     };
 
-    const htmlContent = wrapTables(marked.parse(enhancedMarkdown));
+    const htmlContent = `<div class="markdown-body">${wrapTables(
+      md.parse(enhancedMarkdown)
+    )}</div>`;
 
     res.render('post', {
       title: titleCase(slug),
