@@ -434,13 +434,13 @@ html {
 
 .markdown-body h2 {
   margin-top: 1.5em;
-  font-size: x-large;
-  color: cyan;
+  font-size: large;
+  color: orange;
 }
 
 .markdown-body h3 {
   margin-top: 1.5em;
-  color: orange;
+  color: rgb(57, 233, 119);
 }
 
 .markdown-body table {
@@ -457,7 +457,7 @@ html {
 }
 
 .saa-label {
-  font-size: 1.45rem; /* Bigger */
+  font-size: 1.25rem; /* Bigger */
   color: #b306de; /* AWS blue or tweak as needed */
   background-color: #363636;
   padding: 2px 8px;
@@ -465,5 +465,4 @@ html {
   display: inline-block;
   margin: 0.5rem 0;
   font-weight: bold;
-  text-transform: uppercase;
 }
