@@ -4,6 +4,8 @@ This lab covers **security, replication, performance optimization, and hybrid st
 
 ---
 
+simply add
+
 ## **🔹 1. S3 Block Public Access (Security Feature)**
 
 **Concept:**
