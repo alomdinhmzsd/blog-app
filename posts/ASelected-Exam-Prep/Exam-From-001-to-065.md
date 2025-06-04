@@ -151,7 +151,7 @@ A Big Data analytics company wants to set up an AWS cloud architecture that thro
 - Amazon Gateway Endpoints, Amazon Simple Queue Service (Amazon SQS) and Amazon Kinesis
 - Elastic Load Balancer, Amazon Simple Queue Service (Amazon SQS), AWS Lambda
 - Amazon Simple Queue Service (Amazon SQS), Amazon Simple Notification Service (Amazon SNS) and AWS Lambda
-- **Amazon API Gateway, Amazon Simple Queue Service (Amazon SQS) and Amazon Kinesis**
+- Amazon API Gateway, Amazon Simple Queue Service (Amazon SQS) and Amazon Kinesis\*\*
 
 ---
 
@@ -282,7 +282,7 @@ A retail company's dynamic website is hosted using on-premises servers in its da
 - Use Amazon CloudFront with a custom origin pointing to the DNS record of the website on Amazon Route 53
 - Migrate the website to Amazon S3. Use S3 cross-region replication (S3 CRR) between AWS Regions in the US and Asia
 - Leverage an Amazon Route 53 geo-proximity routing policy pointing to on-premises servers
-- ✅ **Use Amazon CloudFront with a custom origin pointing to the on-premises servers**
+- Use Amazon CloudFront with a custom origin pointing to the on-premises servers\*\*
 
 ---
 
@@ -406,9 +406,9 @@ The engineering team at an in-home fitness company is evaluating multiple in-mem
 
 **As a solutions architect, which of the following solutions would you recommend?** _(Select two)_
 
-- ✅ Power the on-demand, live leaderboard using **Amazon ElastiCache for Redis** as it meets the in-memory, high availability, low latency requirements
+- Power the on-demand, live leaderboard using Amazon ElastiCache for Redis\*\* as it meets the in-memory, high availability, low latency requirements
 - Power the on-demand, live leaderboard using Amazon Neptune as it meets the in-memory, high availability, low latency requirements
-- ✅ Power the on-demand, live leaderboard using **Amazon DynamoDB with DynamoDB Accelerator (DAX)** as it meets the in-memory, high availability, low latency requirements
+- Power the on-demand, live leaderboard using Amazon DynamoDB with DynamoDB Accelerator (DAX)\*\* as it meets the in-memory, high availability, low latency requirements
 - Power the on-demand, live leaderboard using Amazon DynamoDB as it meets the in-memory, high availability, low latency requirements
 - Power the on-demand, live leaderboard using Amazon RDS for Aurora as it meets the in-memory, high availability, low latency requirements
 
@@ -542,7 +542,7 @@ A digital wallet company plans to launch a new cloud-based service for processin
 
 - Configure Amazon SQS to receive encrypted payment notifications from mobile devices. Use Amazon EventBridge rules to extract the payload and perform validation. Route the messages to a backend system hosted on Amazon Lightsail instances with dynamic scaling policies based on memory thresholds and instance health checks
 - Create an Amazon API Gateway endpoint to receive transaction requests from mobile devices. Use AWS Lambda to validate the transactions. For backend processing, deploy the application on Amazon EKS Anywhere, running on on-premises servers in the company’s data center. Use a custom provisioning script to scale Kubernetes worker nodes based on transaction volume
-- ✅ **Expose an Amazon API Gateway REST API endpoint to receive transaction requests from mobile clients. Integrate the API with AWS Lambda to perform basic validation. For backend processing, deploy the long-running application to Amazon ECS using the Fargate launch type, allowing ECS to manage compute and memory provisioning automatically, with no server management required**
+- Expose an Amazon API Gateway REST API endpoint to receive transaction requests from mobile clients. Integrate the API with AWS Lambda to perform basic validation. For backend processing, deploy the long-running application to Amazon ECS using the Fargate launch type, allowing ECS to manage compute and memory provisioning automatically, with no server management required\*\*
 - Build a REST API using Amazon API Gateway. Integrate it with an AWS Step Functions state machine for validation. Launch the backend application using Amazon EKS with self-managed nodes, and use Kubernetes Jobs to handle transaction processing workflows. Manually scale the cluster based on demand
 
 ---
@@ -671,7 +671,7 @@ A financial services company operates a containerized microservices architecture
 - Deploy Amazon ECS with Fargate in a nearby AWS Local Zone. Use CloudWatch Logs to forward events to the primary region. Connect the Local Zone to the company’s data center over a VPN. Configure containers to pull data from on-premises storage through a mounted file share
 - Use an AWS Snowball Edge Compute Optimized device to run EKS-compatible Docker containers on-site. Periodically export application logs and container snapshots to Amazon S3 using Snowball’s offline data transfer features. Use the Snowball console to orchestrate workloads in batches
 - Set up a dedicated AWS Direct Connect connection between the on-premises environment and an AWS Region. Deploy Amazon EKS in the cloud and connect it to the local Kubernetes cluster. Use IAM roles and API Gateway to integrate authentication and traffic flow for hybrid workloads
-- ✅ **Install an AWS Outposts rack in the company’s data center. Use Amazon EKS Anywhere on Outposts to run containerized workloads locally while integrating with AWS APIs**
+- Install an AWS Outposts rack in the company’s data center. Use Amazon EKS Anywhere on Outposts to run containerized workloads locally while integrating with AWS APIs\*\*
 
 ---
 
@@ -798,7 +798,7 @@ A technology blogger wants to write a review on the comparative pricing for vari
 **What is the correct order of the storage charges incurred for the test file on these three storage types?**
 
 - Cost of test file storage on Amazon EFS < Cost of test file storage on Amazon S3 Standard < Cost of test file storage on Amazon EBS
-- ✅ **Cost of test file storage on Amazon S3 Standard < Cost of test file storage on Amazon EFS < Cost of test file storage on Amazon EBS**
+- Cost of test file storage on Amazon S3 Standard < Cost of test file storage on Amazon EFS < Cost of test file storage on Amazon EBS\*\*
 - Cost of test file storage on Amazon S3 Standard < Cost of test file storage on Amazon EBS < Cost of test file storage on Amazon EFS
 - Cost of test file storage on Amazon EBS < Cost of test file storage on Amazon S3 Standard < Cost of test file storage on Amazon EFS
 
@@ -924,7 +924,7 @@ A healthcare analytics company centralizes clinical and operational datasets in 
 
 **Which AWS solution best meets these requirements?**
 
-- ✅ **Use AWS Glue DataBrew to visually build transformation workflows on top of the raw Parquet files in S3. Use DataBrew recipes to track, audit, and share the transformation steps with others. Enable data profiling to inspect column statistics, null values, and data types across datasets**
+- Use AWS Glue DataBrew to visually build transformation workflows on top of the raw Parquet files in S3. Use DataBrew recipes to track, audit, and share the transformation steps with others. Enable data profiling to inspect column statistics, null values, and data types across datasets\*\*
 - Use Amazon AppFlow to move and transform Parquet files in S3. Configure AppFlow transformations and mappings within the visual interface. Share flows with collaborators through AWS IAM policies and scheduled executions
 - Create Amazon Athena SQL queries to perform transformation steps directly on S3. Store queries in AWS Glue Data Catalog and share saved queries with other users through Amazon Athena's query editor
 - Use AWS Glue Studio’s visual canvas to design data transformation workflows on top of the Parquet files in Amazon S3. Configure Glue Studio jobs to run these transformations without writing code. Share the job definitions with team members for reuse. Use the visual job editor to track transformation progress and inspect profiling statistics for each dataset column
@@ -1056,7 +1056,7 @@ An e-commerce company manages a digital catalog of consumer products submitted b
 - Use Amazon SageMaker with a custom-trained NLP model to identify ingredients from the uploaded descriptions. Use Amazon EventBridge to invoke a Lambda function that forwards the document content to a SageMaker endpoint and stores the results in DynamoDB. Fine-tune the model using labeled ingredient datasets from open-source repositories and retrain it monthly
 - Create a workflow where Amazon Transcribe is used to convert synthetic audio versions (created from text of the product descriptions) back into text. Analyze the transcripts manually or using simple keyword matching within a Lambda function. Use Amazon SNS to notify the content moderation team for each processed file
 - Use Amazon Lookout for Vision to scan the uploaded text files in the S3 bucket and extract entities. Invoke this workflow using an S3-triggered Lambda function. Parse the output and use Amazon API Gateway to push updates to the frontend in real time
-- ✅ **Configure S3 Event Notifications to trigger an AWS Lambda function whenever a new product description is uploaded. Inside the function, use Amazon Comprehend's custom entity recognition feature to extract ingredient names. Store these names in the DynamoDB table and let the front-end application query for health scores**
+- Configure S3 Event Notifications to trigger an AWS Lambda function whenever a new product description is uploaded. Inside the function, use Amazon Comprehend's custom entity recognition feature to extract ingredient names. Store these names in the DynamoDB table and let the front-end application query for health scores\*\*
 
 ---
 
@@ -1183,7 +1183,7 @@ A retail company has developed a REST API which is deployed in an Auto Scaling g
 
 **As a Solutions Architect, which of the following would you suggest as the MOST efficient solution to improve the application performance?**
 
-- ✅ **Enable Amazon DynamoDB Accelerator (DAX) for Amazon DynamoDB and Amazon CloudFront for Amazon S3**
+- Enable Amazon DynamoDB Accelerator (DAX) for Amazon DynamoDB and Amazon CloudFront for Amazon S3\*\*
 - Enable ElastiCache Redis for DynamoDB and ElastiCache Memcached for Amazon S3
 - Enable Amazon DynamoDB Accelerator (DAX) for Amazon DynamoDB and ElastiCache Memcached for Amazon S3
 - Enable ElastiCache Redis for DynamoDB and Amazon CloudFront for Amazon S3
@@ -1311,8 +1311,8 @@ A retail company runs a customer management system backed by a Microsoft SQL Ser
 
 - Use AWS Glue to convert T-SQL queries to PostgreSQL-compatible SQL during the migration
 - Configure Amazon Aurora PostgreSQL with a custom endpoint that emulates Microsoft SQL Server behavior
-- ✅ **Deploy Babelfish for Aurora PostgreSQL to enable support for T-SQL commands**
-- ✅ **Use AWS Schema Conversion Tool (AWS SCT) along with AWS Database Migration Service (AWS DMS) to migrate the schema and data**
+- Deploy Babelfish for Aurora PostgreSQL to enable support for T-SQL commands\*\*
+- Use AWS Schema Conversion Tool (AWS SCT) along with AWS Database Migration Service (AWS DMS) to migrate the schema and data\*\*
 - Use Amazon Aurora Global Database to replicate data across regions for compatibility
 
 ---
@@ -1447,7 +1447,7 @@ A company is in the process of migrating its on-premises SMB file shares to AWS 
 - Use Amazon FSx File Gateway to provide low-latency, on-premises access to fully managed file shares in Amazon EFS. The applications deployed on AWS can access this data directly from Amazon EFS
 - Use Amazon Storage Gateway’s File Gateway to provide low-latency, on-premises access to fully managed file shares in Amazon FSx for Windows File Server. The applications deployed on AWS can access this data directly from Amazon FSx in AWS
 - Use AWS Storage Gateway’s File Gateway to provide low-latency, on-premises access to fully managed file shares in Amazon S3. The applications deployed on AWS can access this data directly from Amazon S3
-- ✅ **Use Amazon FSx File Gateway to provide low-latency, on-premises access to fully managed file shares in Amazon FSx for Windows File Server. The applications deployed on AWS can access this data directly from Amazon FSx in AWS**
+- Use Amazon FSx File Gateway to provide low-latency, on-premises access to fully managed file shares in Amazon FSx for Windows File Server. The applications deployed on AWS can access this data directly from Amazon FSx in AWS\*\*
 
 ---
 
@@ -1575,7 +1575,7 @@ A biotech research company needs to perform data analytics on real-time lab resu
 - Set up VPC peering between the company’s VPC and the partner’s VPC. Use AWS Transit Gateway in the partner's account to route traffic from the company’s VPC to the database. Modify the RDS subnet route tables to allow access from the company’s CIDR block
 - Instruct the partner to enable public access on the Amazon RDS instance and add a security group rule to allow inbound access from the company’s IP range. The company accesses the database over the public internet through a NAT Gateway configured in a private subnet
 - Configure a client VPN endpoint in the company’s account. Have researchers connect to the VPN from their local machines. Establish a Direct Connect gateway to the partner’s VPC and route RDS traffic via this connection
-- ✅ **Instruct the partner to create a Network Load Balancer (NLB) in front of the Amazon RDS for MySQL instance. Use AWS PrivateLink to expose the NLB as an interface VPC endpoint in the research company’s VPC**
+- Instruct the partner to create a Network Load Balancer (NLB) in front of the Amazon RDS for MySQL instance. Use AWS PrivateLink to expose the NLB as an interface VPC endpoint in the research company’s VPC\*\*
 
 ---
 
@@ -1702,7 +1702,7 @@ A biotechnology firm runs genomics data analysis workloads using AWS Lambda func
 **Which solution best meets these requirements in the MOST cost-effective way?**
 
 - Set up an Amazon S3 bucket in the research partner’s account and periodically copy EFS contents into the bucket using scheduled AWS DataSync jobs. Use Amazon S3 Access Points to expose the data to the Lambda function in the central account, allowing access via S3 API calls instead of file system mounts
-- ✅ **Use Amazon EFS resource policies to allow cross-account access to the file system from the central account. Attach the EFS mount target to a shared VPC or peered VPC, and mount the file system in the Lambda function configuration using an EFS access point**
+- Use Amazon EFS resource policies to allow cross-account access to the file system from the central account. Attach the EFS mount target to a shared VPC or peered VPC, and mount the file system in the Lambda function configuration using an EFS access point\*\*
 - Package the genomic input data as a Lambda layer and publish it in the research partner's account. Share the layer across accounts by modifying its resource policy and attach the layer to the Lambda function in the central account to access the data during execution
 - Create a second Lambda function in the research partner's account that mounts the EFS file system locally. Have the main Lambda function in the central account invoke this secondary Lambda via Amazon API Gateway for data access and computation. Use IAM cross-account permissions to allow invocation
 
@@ -1830,7 +1830,7 @@ A retail analytics company operates a large-scale data lake on Amazon S3, where 
 **Which solution best meets these requirements?**
 
 - Provision and run a daily Amazon EMR cluster with Apache Spark to process and transform the S3 data. Load the results into Amazon Redshift (provisioned). Enable ML model development by integrating Redshift with Amazon SageMaker notebooks for advanced modeling tasks
-- ✅ **Use a daily AWS Glue job to transform and clean the data stored in Amazon S3. Load the transformed dataset into Amazon Redshift Serverless, which offers MPP capabilities in a serverless model. Enable analysts to use Amazon Redshift ML to build and train ML models**
+- Use a daily AWS Glue job to transform and clean the data stored in Amazon S3. Load the transformed dataset into Amazon Redshift Serverless, which offers MPP capabilities in a serverless model. Enable analysts to use Amazon Redshift ML to build and train ML models\*\*
 - Run a daily AWS Glue job to process and transform the raw files in S3 and register the outputs as Amazon Athena tables in AWS Glue Data Catalog. Allow analysts to build ML models using Amazon Athena ML, with SQL-based predictions on top of S3 data without moving it to a warehouse
 - Use an AWS Glue job to transform and load data into Amazon RDS for PostgreSQL. Allow analysts to run machine learning models using Amazon Aurora ML integrated with PostgreSQL, leveraging Amazon SageMaker endpoints behind the scenes
 
@@ -1964,7 +1964,7 @@ An IT company wants to review its security best-practices after an incident was 
 
 **Which is the MOST effective way to address this issue so that such incidents do not recur?**
 
-- ✅ **Use permissions boundary to control the maximum permissions employees can grant to the IAM principals**
+- Use permissions boundary to control the maximum permissions employees can grant to the IAM principals\*\*
 - Remove full database access for all IAM users in the organization
 - The CTO should review the permissions for each new developer's IAM user so that such incidents don't recur
 - Only root user should have full database access in the organization
@@ -2092,7 +2092,7 @@ The sourcing team at the US headquarters of a global e-commerce company is prepa
 **As a solutions architect, what is your recommendation to enable this collaboration with the LEAST amount of operational overhead?**
 
 - The spreadsheet on the Amazon Elastic File System (Amazon EFS) can be accessed in other AWS regions by using an inter-region VPC peering connection
-- ✅ **The spreadsheet will have to be copied in Amazon S3 which can then be accessed from any AWS region**
+- The spreadsheet will have to be copied in Amazon S3 which can then be accessed from any AWS region\*\*
 - The spreadsheet data will have to be moved into an Amazon RDS for MySQL database which can then be accessed from any AWS region
 - The spreadsheet will have to be copied into Amazon EFS file systems of other AWS regions as Amazon EFS is a regional service and it does not allow access from other AWS regions
 
@@ -2221,7 +2221,7 @@ A logistics company is building a multi-tier application to track the location o
 
 - Leverage Amazon Athena with Amazon S3
 - ❌ Leverage Amazon API Gateway with AWS Lambda
-- ✅ **Leverage Amazon API Gateway with Amazon Kinesis Data Analytics**
+- Leverage Amazon API Gateway with Amazon Kinesis Data Analytics\*\*
 - Leverage Amazon QuickSight with Amazon Redshift
 
 ---
@@ -2355,7 +2355,7 @@ While consolidating logs for the weekly reporting, a development team at an e-co
 **Which of the following represents the best solution for the given scenario?**
 
 - Run Amazon Athena SQL queries against AWS CloudTrail log files stored in Amazon S3 buckets. Use Amazon QuickSight to generate reports for managerial dashboards
-- ✅ **Create an Amazon CloudWatch metric filter that processes AWS CloudTrail logs having API call details and looks at any errors by factoring in all the error codes that need to be tracked. Create an alarm based on this metric's rate to send an Amazon SNS notification to the required team**
+- Create an Amazon CloudWatch metric filter that processes AWS CloudTrail logs having API call details and looks at any errors by factoring in all the error codes that need to be tracked. Create an alarm based on this metric's rate to send an Amazon SNS notification to the required team\*\*
 - Configure AWS CloudTrail to stream event data to Amazon Kinesis. Use Amazon Kinesis stream-level metrics in the Amazon CloudWatch to trigger an AWS Lambda function that will trigger an error workflow
 - AWS Trusted Advisor publishes metrics about check results to Amazon CloudWatch. Create an alarm to track status changes for checks in the Service Limits category for the APIs. The alarm will then notify when the service quota is reached or exceeded
 
@@ -2485,10 +2485,10 @@ A news network uses Amazon Simple Storage Service (Amazon S3) to aggregate the r
 **Which of the following are the MOST cost-effective options to improve the file upload speed into Amazon S3?** (Select two)
 
 - Create multiple AWS Site-to-Site VPN connections between the AWS Cloud and branch offices in Europe and Asia. Use these VPN connections for faster file uploads into Amazon S3
-- ✅ **Use Amazon S3 Transfer Acceleration (Amazon S3TA) to enable faster file uploads into the destination S3 bucket**
+- Use Amazon S3 Transfer Acceleration (Amazon S3TA) to enable faster file uploads into the destination S3 bucket\*\*
 - Create multiple AWS Direct Connect connections between the AWS Cloud and branch offices in Europe and Asia. Use the direct connect connections for faster file uploads into Amazon S3
 - Use AWS Global Accelerator for faster file uploads into the destination Amazon S3 bucket
-- ✅ **Use multipart uploads for faster file uploads into the destination Amazon S3 bucket**
+- Use multipart uploads for faster file uploads into the destination Amazon S3 bucket\*\*
 
 ---
 
@@ -2620,7 +2620,7 @@ An IT security consultancy is working on a solution to protect data stored in Am
 
 - Use Amazon GuardDuty to monitor any malicious activity on data stored in Amazon S3. Use security assessments provided by Amazon GuardDuty to check for vulnerabilities on Amazon EC2 instances
 - Use Amazon Inspector to monitor any malicious activity on data stored in Amazon S3. Use security assessments provided by Amazon GuardDuty to check for vulnerabilities on Amazon EC2 instances
-- ✅ **Use Amazon GuardDuty to monitor any malicious activity on data stored in Amazon S3. Use security assessments provided by Amazon Inspector to check for vulnerabilities on Amazon EC2 instances**
+- Use Amazon GuardDuty to monitor any malicious activity on data stored in Amazon S3. Use security assessments provided by Amazon Inspector to check for vulnerabilities on Amazon EC2 instances\*\*
 - Use Amazon Inspector to monitor any malicious activity on data stored in Amazon S3. Use security assessments provided by Amazon Inspector to check for vulnerabilities on Amazon EC2 instances
 
 ---
@@ -2750,7 +2750,7 @@ An e-commerce company is looking for a solution with high availability, as it pl
 
 **As a Solutions Architect, which of the following will you suggest for the company?**
 
-- ✅ **Use an Application Load Balancer for distributing traffic to the Amazon EC2 instances spread across different Availability Zones (AZs). Configure Auto Scaling group to mask any failure of an instance**
+- Use an Application Load Balancer for distributing traffic to the Amazon EC2 instances spread across different Availability Zones (AZs). Configure Auto Scaling group to mask any failure of an instance\*\*
 
 - Use an Auto Scaling group for distributing traffic to the Amazon EC2 instances spread across different Availability Zones (AZs). Configure an elastic IP address (EIP) to mask any failure of an instance
 
@@ -2888,7 +2888,7 @@ The flagship application for a gaming company connects to an Amazon Aurora datab
 
 - Use an Amazon DynamoDB global table for the games table and use Amazon DynamoDB tables for the users and games_played tables
 
-- ✅ **Use an Amazon Aurora Global Database for the games table and use Amazon Aurora for the users and games_played tables**
+- Use an Amazon Aurora Global Database for the games table and use Amazon Aurora for the users and games_played tables\*\*
 
 ---
 
