@@ -37,11 +37,15 @@ function titleCase(str) {
 }
 
 // Utility: Wrap <table> elements in a scrollable container
-function wrapTables(html) {
-  if (typeof html !== 'string') return '';
+function wrapTablesAndPre(html) {
   return html
     .replace(/<table>/g, '<div class="table-wrapper"><table>')
-    .replace(/<\/table>/g, '</table></div>');
+    .replace(/<\/table>/g, '</table></div>')
+    .replace(
+      /<pre class="hljs">/g,
+      '<div class="code-wrapper"><pre class="hljs">'
+    )
+    .replace(/<\/pre>/g, '</pre></div>');
 }
 
 // Home page: List all posts grouped by category
@@ -106,7 +110,9 @@ app.get('/post/:category/:slug', (req, res) => {
     let htmlContent = '';
     try {
       const rendered = md.render(enhancedMarkdown);
-      htmlContent = `<div class="markdown-body">${wrapTables(rendered)}</div>`;
+      htmlContent = `<div class="markdown-body">${wrapTablesAndPre(
+        rendered
+      )}</div>`;
     } catch (err) {
       console.error('❌ Markdown rendering failed for:', filePath);
       console.error(err);

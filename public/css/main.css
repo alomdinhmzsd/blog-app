@@ -1,3 +1,24 @@
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.page-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.anchor-wrapper {
+  scroll-margin-top: 100px;
+  scroll-margin-left: 0px;
+  display: block;
+}
+
+* {
+  overflow-x: hidden !important;
+}
+
 /* =====================
     Base Layout & Typography
 ========================= */
@@ -454,6 +475,16 @@ html {
   color: #f8f8f2;
   padding: 8px;
   border-radius: 4px;
+}
+.markdown-body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.markdown-body pre,
+.markdown-body table {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .saa-label {
