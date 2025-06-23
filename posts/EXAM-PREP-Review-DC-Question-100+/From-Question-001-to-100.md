@@ -1,15 +1,19 @@
+#### From Question 001 to 100 Starts Here
+
 ---
+
 title: 'SAA-Q001: Choose the Most Cost-Effective S3 Storage Class for Unpredictable Log Access'
 questionId: 'saa-q001'
 category: 'Design Cost-Optimized Architectures'
 tags:
-  [
-    'saa-c03',
-    's3',
-    'intelligent-tiering',
-    'storage-classes',
-    'cost-optimization',
-  ]
+[
+'saa-c03',
+'s3',
+'intelligent-tiering',
+'storage-classes',
+'cost-optimization',
+]
+
 ---
 
 ## Question 'SAA-Q001'
@@ -1091,8 +1095,11 @@ A company runs an application that uses an Amazon RDS PostgreSQL database. The d
 **How can the Solutions Architect enable encryption for the database without incurring any data loss?**
 
 - Update the RDS DB to Multi-AZ mode and enable encryption for the standby replica. Perform a failover to the standby instance and then delete the unencrypted RDS DB instance
+
 - Create an RDS read replica and specify an encryption key. Promote the encrypted read replica to primary. Update the application to point to the new RDS DB endpoint
+
 - Create a snapshot of the existing RDS DB instance. Create an encrypted copy of the snapshot. Create a new RDS DB instance from the encrypted snapshot and update the application. Use AWS DMS to synchronize data between the source and destination RDS DBs
+
 - Create a snapshot of the existing RDS DB instance. Create an encrypted copy of the snapshot. Create a new RDS DB instance from the encrypted snapshot. Configure the application to use the new DB endpoint
 
 ---
